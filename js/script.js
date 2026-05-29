@@ -6,7 +6,7 @@ const headerHTML = `
 <header class="site-header">
   <div class="nav-container">
     <a href="index.html" class="brand-identity">
-      <img src="../img/logo.png" alt="Unitech Networks" class="main-logo-img" />
+      <img src="../img/logo/logo.png" alt="Unitech Networks" class="main-logo-img" />
     </a>
 
     <button class="menu-toggle-btn" aria-label="Toggle Navigation">
@@ -16,45 +16,21 @@ const headerHTML = `
     <nav class="navigation-gate">
       <ul class="menu-links">
 
+        <li><a href="index.html#home">Home</a></li>
         <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#values">Values</a></li>
 
-        <li class="dropdown">
+       <li class="dropdown">
           <a href="#" class="dropdown-trigger">
             Services <i data-lucide="chevron-down"></i>
           </a>
 
           <ul class="dropdown-menu">
-
-            <li class="dropdown-header">
-              <i data-lucide="layers"></i> Core Infrastructure
-            </li>
-
-            <li><a href="transmission.html"><i data-lucide="radio"></i> Transmission</a></li>
-            <li><a href="access.html"><i data-lucide="network"></i> Access Networks</a></li>
-            <li><a href="wireline.html"><i data-lucide="git-branch"></i> Wireline Projects</a></li>
-            <li><a href="civil_electrical.html"><i data-lucide="zap"></i> Civil & Electrical</a></li>
-            <li><a href="civils.html"><i data-lucide="factory"></i> Civils Infrastructure</a></li>
-
-            <li class="dropdown-header">
-              <i data-lucide="shield-check"></i> Specialized Services
-            </li>
-
-            <li><a href="fiber.html"><i data-lucide="git-commit"></i> Optical Fibre Splicing</a></li>
-            <li><a href="security.html"><i data-lucide="cctv"></i> CCTV & Security</a></li>
-            <li><a href="special.html"><i data-lucide="star"></i> Special Projects</a></li>
-
-            <li class="dropdown-header">
-              <i data-lucide="settings"></i> Operations & Support
-            </li>
-
-            <li><a href="maintenance.html"><i data-lucide="wrench"></i> Operation & Maintenance</a></li>
-            <li><a href="fault.html"><i data-lucide="alert-triangle"></i> Faults & Emergencies</a></li>
-
+            <li><a href="telecommunications.html"><i data-lucide="radio"></i> Telecommunications</a></li>
+            <li><a href="civils.html"><i data-lucide="hard-hat"></i> Civil Works</a></li>
+            <li><a href="security.html"><i data-lucide="cctv"></i> CCTV & Security Solutions</a></li>
+            <li><a href="solar.html"><i data-lucide="sun"></i> Solar & Battery Solutions</a></li>
           </ul>
         </li>
-
-        <li><a href="index.html#safety">Safety</a></li>
 
         <li>
           <a href="index.html#contact" class="nav-action-cta">
@@ -73,37 +49,29 @@ const footerHTML = `
   <div class="footer-grid">
 
     <div class="footer-col brand-col">
-      <img src="../img/logo.png" alt="Unitech Networks" class="footer-logo">
+      <img src="../img/logo/logo.png" alt="Unitech Networks" class="footer-logo">
 
       <p>
         Providing enterprise-grade infrastructure and engineering
-        solutions across Australia since 2021.
+        solutions across Victoria, Australia since 2021.
       </p>
     </div>
 
     <div class="footer-col">
       <h4>Our Services</h4>
 
-      <ul>
-        <li><a href="fiber.html">Optical Fibre</a></li>
-        <li><a href="security.html">CCTV & Security</a></li>
-        <li><a href="transmission.html">Transmission</a></li>
-        <li><a href="security.html">Security Systems</a></li>
+      <ul class="contact-details">
+        <li><i data-lucide="radio"></i> <a href="telecommunications.html">Telecommunications</a></li>
+        <li><i data-lucide="hard-hat"></i> <a href="civils.html">Civil Works</a></li>
+        <li><i data-lucide="cctv"></i><a href="security.html"> CCTV & Security Solutions</a></li>
+        <li><i data-lucide="sun"></i><a href="solar.html"> Solar & Battery Solutions</a></li>
       </ul>
-      <p style="margin-top: 10px; font-size: 0.85rem;">
-        <a href="index.html">See full service list in menu</a>
-      </p>
     </div>
 
     <div class="footer-col">
       <h4>Contact Us</h4>
 
       <ul class="contact-details">
-        <li>
-          <i data-lucide="map-pin"></i>
-          34, Priya street,<br>Werribee, VIC 3030
-        </li>
-
         <li>
           <i data-lucide="phone"></i>
           <a href="tel:+61415661770">+61 415 661 770</a>
