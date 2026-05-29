@@ -228,3 +228,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+const establishYear = 2021;
+const currentYear = new Date().getFullYear();
+const yearsActive = currentYear - establishYear;
+
+const yearsElement = document.getElementById("years-of-operation");
+if (yearsElement) {
+  // Use yearsActive + "+" if you want to keep the "4+" style,
+  // or just yearsActive for the exact number.
+  yearsElement.textContent = yearsActive + "+";
+}
