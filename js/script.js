@@ -138,20 +138,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // 1. Inject components
   document.getElementById("header-placeholder").innerHTML = headerHTML;
   document.getElementById("footer-placeholder").innerHTML = footerHTML;
-
-  // 2. Re-initialize icons
   lucide.createIcons();
 
-  // 3. Define UI variables AFTER injection
+  // 2. Define UI variables AFTER injection
   const siteHeader = document.querySelector(".site-header");
   const scrollToTopBtn = document.getElementById("scrollToTopBtn");
   const menuToggleBtn = document.querySelector(".menu-toggle-btn");
   const navigationGate = document.querySelector(".navigation-gate");
   const menuNavLinks = document.querySelectorAll(".menu-links a");
   const dropdownTrigger = document.querySelector(".dropdown-trigger");
-  // 4. Attach Listeners
 
-  // Header Scroll
+  // 3. Header Scroll Behavior
   window.addEventListener(
     "scroll",
     () => {
@@ -168,26 +165,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Add this inside DOMContentLoaded in components.js
+  // 4. Active Navigation Link Logic
   const currentPath = window.location.pathname;
-  const navLinks = document.querySelectorAll(".menu-links a");
-
-  navLinks.forEach((link) => {
-    // Check if link matches current URL
+  menuNavLinks.forEach((link) => {
     if (
       link.getAttribute("href") &&
       currentPath.includes(link.getAttribute("href").replace("../html/", ""))
     ) {
       link.classList.add("active-nav");
     }
-
-    link.addEventListener("click", () => {
-      navLinks.forEach((l) => l.classList.remove("active-nav"));
-      link.classList.add("active-nav");
-    });
   });
 
-  // Mobile Nav
+  // 5. Mobile Nav Toggle Function
   function toggleMenu() {
     const expanded = menuToggleBtn.getAttribute("aria-expanded") === "true";
     menuToggleBtn.setAttribute("aria-expanded", String(!expanded));
@@ -198,77 +187,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (menuToggleBtn) menuToggleBtn.addEventListener("click", toggleMenu);
 
+  // 6. Navigation Link Closing Logic (FIXED: Ignores Dropdown Trigger)
   menuNavLinks.forEach((link) => {
     link.addEventListener("click", () => {
-      if (navigationGate && navigationGate.classList.contains("open"))
+      const isDropdownTrigger = link.classList.contains("dropdown-trigger");
+      // Close menu only if it's not the trigger and the menu is currently open
+      if (!isDropdownTrigger && navigationGate?.classList.contains("open")) {
         toggleMenu();
+      }
     });
   });
 
-  const unitechForm = document.getElementById("unitechForm");
-  const formSuccessAlert = document.getElementById("formSuccessAlert");
-  const formErrorAlert = document.getElementById("formErrorAlert");
-  const submitButton = document.getElementById("btn-submit");
-
-  if (unitechForm) {
-    unitechForm.addEventListener("submit", async function (e) {
-      e.preventDefault();
-
-      // Hide old alerts
-      if (formSuccessAlert) formSuccessAlert.style.display = "none";
-      if (formErrorAlert) formErrorAlert.style.display = "none";
-
-      // Disable submit button
-      if (submitButton) submitButton.disabled = true;
-
-      const formData = new FormData(this);
-
-      try {
-        const response = await fetch(this.action, {
-          method: "POST",
-          body: formData,
-          headers: {
-            Accept: "application/json",
-          },
-        });
-
-        if (response.ok) {
-          // Reset form
-          this.reset();
-
-          // OPTIONAL: hide form after success
-
-          this.style.display = "none";
-          formSuccessAlert.style.display = "block";
-
-          setTimeout(() => {
-            this.style.display = "block";
-            formSuccessAlert.style.display = "none";
-          }, 3000);
-        } else {
-          this.style.display = "none";
-          formErrorAlert.style.display = "block";
-
-          setTimeout(() => {
-            this.style.display = "block";
-            formErrorAlert.style.display = "none";
-          }, 3000);
-        }
-      } catch (error) {
-        this.style.display = "none";
-        formErrorAlert.style.display = "block";
-
-        setTimeout(() => {
-          this.style.display = "block";
-          formErrorAlert.style.display = "none";
-        }, 3000);
-      } finally {
-        if (submitButton) submitButton.disabled = false;
-      }
-    });
-  }
-
-  // Dropdown
+  // 7. Dropdown Logic (Mobile Specific)
   if (dropdownTrigger) {
     dropdownTrigger.addEventListener("click", (e) => {
       if (window.innerWidth < 1024) {
@@ -278,15 +208,54 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // 8. Form Submission Handling
+  const unitechForm = document.getElementById("unitechForm");
+  if (unitechForm) {
+    unitechForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const formSuccessAlert = document.getElementById("formSuccessAlert");
+      const formErrorAlert = document.getElementById("formErrorAlert");
+      const submitButton = document.getElementById("btn-submit");
+
+      if (formSuccessAlert) formSuccessAlert.style.display = "none";
+      if (formErrorAlert) formErrorAlert.style.display = "none";
+      if (submitButton) submitButton.disabled = true;
+
+      try {
+        const response = await fetch(this.action, {
+          method: "POST",
+          body: new FormData(this),
+          headers: { Accept: "application/json" },
+        });
+
+        if (response.ok) {
+          this.reset();
+          this.style.display = "none";
+          formSuccessAlert.style.display = "block";
+          setTimeout(() => {
+            this.style.display = "block";
+            formSuccessAlert.style.display = "none";
+          }, 3000);
+        } else {
+          throw new Error();
+        }
+      } catch (error) {
+        this.style.display = "none";
+        formErrorAlert.style.display = "block";
+        setTimeout(() => {
+          this.style.display = "block";
+          formErrorAlert.style.display = "none";
+        }, 3000);
+      } finally {
+        if (submitButton) submitButton.disabled = false;
+      }
+    });
+  }
 });
 
-const establishYear = 2021;
-const currentYear = new Date().getFullYear();
-const yearsActive = currentYear - establishYear;
-
+// 9. Footer Years Calculation
 const yearsElement = document.getElementById("years-of-operation");
 if (yearsElement) {
-  // Use yearsActive + "+" if you want to keep the "4+" style,
-  // or just yearsActive for the exact number.
-  yearsElement.textContent = yearsActive + "+";
+  yearsElement.textContent = new Date().getFullYear() - 2021 + "+";
 }

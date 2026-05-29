@@ -1554,6 +1554,18 @@ section {
 #scrollToTopBtn i {
   align-content: center;
 }
+
+/* Ensure the dropdown trigger captures clicks efficiently */
+.dropdown-trigger {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.dropdown-trigger i {
+  /* This prevents the icon from 'stealing' the click event */
+  pointer-events: none;
+}
+
 /* ==========================================================================
    15. RESPONSIVE
    ========================================================================== */
@@ -1592,11 +1604,12 @@ section {
     right: 0;
     bottom: 0;
     background: var(--bg-pure);
-    padding: 3rem 2rem;
+    padding: 1.5rem;
     transform: translateX(100%);
     transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 999;
     overflow-y: auto;
+    height: 350px;
   }
 
   .site-header.compressed .navigation-gate {
@@ -1610,12 +1623,17 @@ section {
     flex-direction: column;
     width: 100%;
     gap: 2rem;
+    align-items: flex-start;
   }
 
   .menu-links a {
     font-size: 1.2rem;
-    display: block;
     text-align: center;
+  }
+
+  .dropdown-menu {
+    min-width: 270px;
+    padding: 0px;
   }
 
   .menu-toggle-btn.open span:nth-child(1) {
