@@ -148,10 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuToggleBtn = document.querySelector(".menu-toggle-btn");
   const navigationGate = document.querySelector(".navigation-gate");
   const menuNavLinks = document.querySelectorAll(".menu-links a");
-  const unitechForm = document.getElementById("unitechForm");
-  const formSuccessAlert = document.getElementById("formSuccessAlert");
   const dropdownTrigger = document.querySelector(".dropdown-trigger");
-
   // 4. Attach Listeners
 
   // Header Scroll
@@ -208,12 +205,66 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Contact Form
+  const unitechForm = document.getElementById("unitechForm");
+  const formSuccessAlert = document.getElementById("formSuccessAlert");
+  const formErrorAlert = document.getElementById("formErrorAlert");
+  const submitButton = document.getElementById("btn-submit");
+
   if (unitechForm) {
-    unitechForm.addEventListener("submit", function (e) {
+    unitechForm.addEventListener("submit", async function (e) {
       e.preventDefault();
-      this.style.display = "none";
-      if (formSuccessAlert) formSuccessAlert.style.display = "block";
+
+      // Hide old alerts
+      if (formSuccessAlert) formSuccessAlert.style.display = "none";
+      if (formErrorAlert) formErrorAlert.style.display = "none";
+
+      // Disable submit button
+      if (submitButton) submitButton.disabled = true;
+
+      const formData = new FormData(this);
+
+      try {
+        const response = await fetch(this.action, {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json",
+          },
+        });
+
+        if (response.ok) {
+          // Reset form
+          this.reset();
+
+          // OPTIONAL: hide form after success
+
+          this.style.display = "none";
+          formSuccessAlert.style.display = "block";
+
+          setTimeout(() => {
+            this.style.display = "block";
+            formSuccessAlert.style.display = "none";
+          }, 3000);
+        } else {
+          this.style.display = "none";
+          formErrorAlert.style.display = "block";
+
+          setTimeout(() => {
+            this.style.display = "block";
+            formErrorAlert.style.display = "none";
+          }, 3000);
+        }
+      } catch (error) {
+        this.style.display = "none";
+        formErrorAlert.style.display = "block";
+
+        setTimeout(() => {
+          this.style.display = "block";
+          formErrorAlert.style.display = "none";
+        }, 3000);
+      } finally {
+        if (submitButton) submitButton.disabled = false;
+      }
     });
   }
 

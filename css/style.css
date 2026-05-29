@@ -14,9 +14,16 @@
   --bg-muted: #f8fafc;
   --bg-deep: #0b1120;
 
+  /* Primary Brand */
   --tech-blue: #0a58ff;
   --tech-blue-hover: #0041cc;
   --tech-blue-glow: rgba(10, 88, 255, 0.07);
+
+  --tech-success: #28a745;
+  --tech-green-glow: rgba(40, 167, 69, 0.07);
+
+  --tech-error: #ff4d4d;
+  --tech-red-glow: rgba(255, 77, 77, 0.07);
 
   --text-main: #1e293b;
   --text-sub: #475569;
@@ -24,6 +31,8 @@
 
   --stroke-clean: #e2e8f0;
   --stroke-active: #0a58ff;
+  --stroke-success: #28a745;
+  --stroke-error: #ff4d4d;
   --radius: 14px;
   --radius-lg: 20px;
 
@@ -960,7 +969,6 @@ section {
   line-height: 1.65;
 }
 
-
 @keyframes fadeInPane {
   from {
     opacity: 0;
@@ -1314,16 +1322,15 @@ section {
 .success-alert-container {
   text-align: center;
   padding: 3.5rem 2rem;
-  border: 1px dashed var(--stroke-active);
-  background: var(--tech-blue-glow);
+  border: 1px dashed var(--stroke-success);
+  background: var(--tech-green-glow);
   border-radius: var(--radius);
 }
 
-.success-alert-container i {
+.success-alert-container svg {
   width: 44px;
   height: 44px;
-  color: var(--tech-blue);
-  margin-bottom: 1rem;
+  color: var(--tech-success) !important;
 }
 .success-alert-container h3 {
   font-size: 1.35rem;
@@ -1331,6 +1338,29 @@ section {
   margin-bottom: 0.45rem;
 }
 .success-alert-container p {
+  font-size: 0.96rem;
+  color: var(--text-sub);
+}
+
+.error-alert-container {
+  text-align: center;
+  padding: 3.5rem 2rem;
+  border: 1px dashed var(--stroke-error);
+  background: var(--tech-red-glow);
+  border-radius: var(--radius);
+}
+
+.error-alert-container svg {
+  width: 44px;
+  height: 44px;
+  color: var(--tech-error) !important;
+}
+.error-alert-container h3 {
+  font-size: 1.35rem;
+  color: var(--bg-deep);
+  margin-bottom: 0.45rem;
+}
+.error-alert-container p {
   font-size: 0.96rem;
   color: var(--text-sub);
 }
@@ -1679,5 +1709,4 @@ section {
   .carrier-tags-row {
     gap: 1.5rem;
   }
-
 }
