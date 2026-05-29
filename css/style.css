@@ -960,75 +960,6 @@ section {
   line-height: 1.65;
 }
 
-/* ==========================================================================
-   10. SERVICES / TABS
-   ========================================================================== */
-.capabilities-matrix-section {
-  background: var(--bg-pure);
-}
-
-.matrix-subtitle {
-  font-size: 1.1rem;
-  color: var(--text-sub);
-  margin-top: 0.65rem;
-  max-width: 660px;
-}
-
-.services-tab-system {
-  max-width: 1320px;
-  margin: 4rem auto 0;
-}
-
-.tab-selectors-container {
-  display: flex;
-  gap: 0.5rem;
-  border-bottom: 2px solid var(--stroke-clean);
-  overflow-x: auto;
-  padding-bottom: 1px;
-  margin-bottom: 3.5rem;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-}
-
-.tab-selectors-container::-webkit-scrollbar {
-  display: none;
-}
-
-.tab-trigger {
-  padding: 1rem 1.75rem;
-  background: transparent;
-  border: none;
-  border-bottom: 2.5px solid transparent;
-  font-family: var(--font);
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-sub);
-  cursor: pointer;
-  white-space: nowrap;
-  position: relative;
-  top: 2px;
-  border-radius: 6px 6px 0 0;
-  transition: all 0.22s ease;
-}
-
-.tab-trigger:hover {
-  color: var(--tech-blue);
-  background: var(--tech-blue-glow);
-}
-.tab-trigger.active {
-  color: var(--tech-blue);
-  border-bottom-color: var(--tech-blue);
-  font-weight: 700;
-}
-
-.tab-pane {
-  display: none;
-}
-
-.tab-pane.active {
-  display: block;
-  animation: fadeInPane 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-}
 
 @keyframes fadeInPane {
   from {
@@ -1749,8 +1680,4 @@ section {
     gap: 1.5rem;
   }
 
-  .tab-trigger {
-    padding: 0.85rem 1.25rem;
-    font-size: 0.88rem;
-  }
 }

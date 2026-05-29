@@ -86,10 +86,13 @@ const footerHTML = `
 
       <ul>
         <li><a href="fiber.html">Optical Fibre</a></li>
-        <li><a href="civil.html">Civils</a></li>
+        <li><a href="security.html">CCTV & Security</a></li>
         <li><a href="transmission.html">Transmission</a></li>
         <li><a href="security.html">Security Systems</a></li>
       </ul>
+      <p style="margin-top: 10px; font-size: 0.85rem;">
+        <a href="index.html">See full service list in menu</a>
+      </p>
     </div>
 
     <div class="footer-col">
@@ -180,7 +183,13 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
       link.classList.add("active-nav");
     }
+
+    link.addEventListener("click", () => {
+      navLinks.forEach((l) => l.classList.remove("active-nav"));
+      link.classList.add("active-nav");
+    });
   });
+
   // Mobile Nav
   function toggleMenu() {
     const expanded = menuToggleBtn.getAttribute("aria-expanded") === "true";
