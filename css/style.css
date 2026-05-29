@@ -267,34 +267,6 @@ body {
   margin-bottom: 1rem;
 }
 
-/* 2. Tablet adjustment (screens 768px or smaller) */
-@media (max-width: 768px) {
-  .service-hero {
-    grid-template-columns: 1fr;
-  }
-  .technical-checklist {
-    grid-template-columns: 1fr 1fr;
-  }
-  .services-container {
-    grid-template-columns: 1fr;
-    padding: 1rem;
-    gap: 1.5rem;
-  }
-
-  .service-card {
-    padding: 1.5rem;
-  }
-}
-
-/* 3. Mobile adjustment (screens 484px or smaller) */
-@media (max-width: 484px) {
-  .service-hero {
-    grid-template-columns: 1fr;
-  }
-  .technical-checklist {
-    grid-template-columns: 1fr;
-  }
-}
 /* ==========================================================================
    2. GLOBAL COMPONENTS
    ========================================================================== */
@@ -744,6 +716,38 @@ section {
 .carrier-tag-item span {
   font-weight: 700;
   font-size: 1rem;
+}
+
+.partners-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  max-width: 1300px;
+  margin: 3.5rem auto 0;
+}
+
+.partner-logo {
+  flex: 0 0 calc(20% - 3rem);
+  max-width: 120px;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.partner-logo img {
+  width: 100%;
+  height: auto;
+  filter: grayscale(5%);
+}
+
+.partner-logo:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.partner-logo:hover img {
+  filter: grayscale(0%);
 }
 
 /* ==========================================================================
@@ -1699,9 +1703,38 @@ section {
     bottom: 20px;
     right: 20px;
   }
+  .partner-logo {
+    flex: 0 0 calc(33.333% - 3rem);
+  }
+
+  .service-hero {
+    grid-template-columns: 1fr;
+  }
+  .technical-checklist {
+    grid-template-columns: 1fr 1fr;
+  }
+  .services-container {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    padding: 1.5rem;
+  }
 }
 
 @media (max-width: 480px) {
+  .service-hero {
+    grid-template-columns: 1fr;
+  }
+  .technical-checklist {
+    grid-template-columns: 1fr;
+  }
+  .partner-logo {
+    flex: 0 0 calc(50% - 3rem);
+  }
+
   .hero-actions-row {
     flex-direction: column;
     align-items: stretch;
