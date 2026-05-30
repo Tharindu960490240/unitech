@@ -151,6 +151,13 @@ document.addEventListener("DOMContentLoaded", () => {
     menuToggleBtn.classList.toggle("open");
     navigationGate.classList.toggle("open");
     document.body.style.overflow = !expanded ? "hidden" : "";
+
+    // Reset dropdown height when menu closes
+    if (expanded) {
+      navigationGate.classList.remove("dropdown-expanded");
+      const menu = dropdownTrigger?.nextElementSibling;
+      if (menu) menu.style.display = "none";
+    }
   }
 
   if (menuToggleBtn) menuToggleBtn.addEventListener("click", toggleMenu);
@@ -168,11 +175,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 7. Dropdown Logic (Mobile Specific)
   if (dropdownTrigger) {
+    // Desktop Hover logic
+    dropdownTrigger.addEventListener("mouseenter", () => {
+      if (window.innerWidth < 1024) {
+        navigationGate.classList.add("dropdown-expanded");
+      }
+    });
+
+    dropdownTrigger.addEventListener("mouseleave", () => {
+      if (window.innerWidth < 1024) {
+        navigationGate.classList.remove("dropdown-expanded");
+      }
+    });
+
     dropdownTrigger.addEventListener("click", (e) => {
       if (window.innerWidth < 1024) {
         e.preventDefault();
         const menu = dropdownTrigger.nextElementSibling;
-        menu.style.display = menu.style.display === "block" ? "none" : "block";
+        const isOpen = menu.style.display === "block";
+        menu.style.display = isOpen ? "none" : "block";
+        navigationGate.classList.toggle("dropdown-expanded", !isOpen);
       }
     });
   }
