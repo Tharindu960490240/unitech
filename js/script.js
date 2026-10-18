@@ -294,14 +294,19 @@ if (quotationForm) {
   });
 }
 
-// 11. Set Minimum Booking Date to 1 Week From Today
+// 11. Set Minimum Booking Date to 1 Week From Today (Local Timezone Fix)
 const bookingDateInput = document.getElementById("bookingDate");
 if (bookingDateInput) {
   const today = new Date();
   // Add 7 days to current date
   today.setDate(today.getDate() + 7);
 
-  // Format as YYYY-MM-DD for the HTML date input
-  const minDateString = today.toISOString().split("T")[0];
+  // Use local timezone values instead of toISOString() (UTC)
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, "0"); // Months are 0-indexed
+  const dd = String(today.getDate()).padStart(2, "0");
+
+  const minDateString = `${yyyy}-${mm}-${dd}`;
   bookingDateInput.setAttribute("min", minDateString);
 }
+X;
