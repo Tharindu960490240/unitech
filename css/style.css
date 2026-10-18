@@ -1888,7 +1888,7 @@ section {
   }
 
   .form-input-wrapper input[type="date"] {
-    max-width: 85%;
+    max-width: 80%;
   }
 }
 
