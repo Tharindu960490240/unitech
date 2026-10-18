@@ -1886,6 +1886,10 @@ section {
   .service-hero-image {
     height: 220px;
   }
+
+  .form-input-wrapper input[type="date"] {
+    max-width: 100%;
+  }
 }
 
 /* Responsive */
