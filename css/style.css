@@ -1681,6 +1681,7 @@ section {
 .form-input-wrapper input[type="date"] {
   position: relative;
   cursor: pointer;
+  max-height: 51.2px !important;
 }
 
 /* Custom styling for native date picker calendar icon appearance in modern browsers */
