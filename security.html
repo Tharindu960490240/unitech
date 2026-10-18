@@ -95,7 +95,10 @@
 
         <article class="service-box">
           <div class="service-img">
-            <img src="../img/cctv/access_system.jpg" alt="Access Control Systems" />
+            <img
+              src="../img/cctv/access_system.jpg"
+              alt="Access Control Systems"
+            />
           </div>
           <div class="service-body">
             <div class="box-header">
@@ -133,7 +136,10 @@
 
         <article class="service-box">
           <div class="service-img">
-            <img src="../img/cctv/remote.jpg" alt="Remote Monitoring Solutions" />
+            <img
+              src="../img/cctv/remote.jpg"
+              alt="Remote Monitoring Solutions"
+            />
           </div>
           <div class="service-body">
             <div class="box-header">
@@ -149,6 +155,178 @@
             </p>
           </div>
         </article>
+      </section>
+
+      <!-- Quotation Request Form Section -->
+      <section class="communication-terminal-section" id="quote-request">
+        <div
+          class="terminal-grid-layout"
+          style="grid-template-columns: 1fr; max-width: 800px; margin: 0 auto"
+        >
+          <div class="terminal-form-side">
+            <div class="form-card-container">
+              <div class="text-center" style="margin-bottom: 2rem">
+                <span class="section-badge">Get a Quote</span>
+                <h3>Request a Quotation</h3>
+                <p class="form-desc-text">
+                  Fill out the form below with your project details and our team
+                  will get back to you promptly to confirm your booking and
+                  provide an estimate.
+                </p>
+              </div>
+
+              <form
+                id="quotationForm"
+                action="https://formspree.io/f/xbdbwwbe"
+                method="POST"
+                class="clean-enterprise-form"
+              >
+                <div class="form-input-wrapper">
+                  <label for="fullName"
+                    >Your Full Name <span class="required-star">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="fullName"
+                    name="Full Name"
+                    required
+                    placeholder="John Doe"
+                  />
+                </div>
+
+                <div class="form-dual-row">
+                  <div class="form-input-wrapper">
+                    <label for="quoteEmail"
+                      >Email Address <span class="required-star">*</span></label
+                    >
+                    <input
+                      type="email"
+                      id="quoteEmail"
+                      name="Email"
+                      required
+                      placeholder="you@example.com.au"
+                    />
+                  </div>
+                  <div class="form-input-wrapper">
+                    <label for="quotePhone"
+                      >Phone Number <span class="required-star">*</span></label
+                    >
+                    <input
+                      type="tel"
+                      id="quotePhone"
+                      name="Phone Number"
+                      required
+                      placeholder="+61 400 000 000"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-input-wrapper">
+                  <label for="serviceType"
+                    >Type of Electrical Service required?
+                    <span class="required-star">*</span></label
+                  >
+                  <select id="serviceType" name="Service Type" required>
+                    <option value="" disabled selected>
+                      Select required service...
+                    </option>
+                    <option value="CCTV Camera Installation">
+                      CCTV Camera Installation
+                    </option>
+                    <option value="Alarm Systems">Alarm Systems</option>
+                    <option value="Video Intercom Systems">
+                      Video Intercom Systems
+                    </option>
+                    <option value="Access Control Systems">
+                      Access Control Systems
+                    </option>
+                    <option value="Security System Upgrades">
+                      Security System Upgrades
+                    </option>
+                    <option value="Remote Monitoring Solutions">
+                      Remote Monitoring Solutions
+                    </option>
+                    <option value="General Electrical Service">
+                      General Electrical Service
+                    </option>
+                  </select>
+                </div>
+
+                <div class="form-input-wrapper">
+                  <label for="bookingDate"
+                    >Approx Booking Date
+                    <span class="required-star">*</span></label
+                  >
+                  <input
+                    type="date"
+                    id="bookingDate"
+                    name="Approx Booking Date"
+                    required
+                  />
+                  <small
+                    style="
+                      color: var(--text-muted);
+                      font-size: 0.78rem;
+                      margin-top: 2px;
+                    "
+                    >Minimum 1 week notice required. We will contact you to
+                    confirm your date.</small
+                  >
+                </div>
+
+                <div class="form-input-wrapper">
+                  <label for="quoteMessage"
+                    >Please provide details of your Electrical Service enquiry?
+                    <span class="required-star">*</span></label
+                  >
+                  <textarea
+                    id="quoteMessage"
+                    name="Message"
+                    required
+                    placeholder="Tell us about your project requirements..."
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  class="btn-submit-form"
+                  id="btn-submit-quote"
+                >
+                  <span>Submit Quotation Request</span>
+                  <i data-lucide="send"></i>
+                </button>
+              </form>
+
+              <!-- Success Alert -->
+              <div
+                id="quoteSuccessAlert"
+                class="success-alert-container"
+                style="display: none"
+              >
+                <i data-lucide="check-circle"></i>
+                <h3>Quotation Request Sent!</h3>
+                <p>
+                  Thanks for reaching out. Our team will review your
+                  requirements and be in touch with you shortly.
+                </p>
+              </div>
+
+              <!-- Error Alert -->
+              <div
+                id="quoteErrorAlert"
+                class="error-alert-container"
+                style="display: none"
+              >
+                <i data-lucide="alert-circle"></i>
+                <h3>Submission Failed</h3>
+                <p>
+                  There was an issue sending your request. Please try again
+                  later.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 

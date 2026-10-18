@@ -1340,7 +1340,7 @@ section {
 .form-dual-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
+  gap: 1.5rem;
 }
 
 .form-input-wrapper {
@@ -1391,7 +1391,7 @@ section {
 
 .btn-submit-form {
   width: 100%;
-  margin-top: 0.25rem;
+  margin-top: 0.7rem;
 }
 
 .success-alert-container {
@@ -1639,6 +1639,60 @@ section {
 .dropdown-trigger svg {
   /* This prevents the icon from 'stealing' the click event */
   pointer-events: none;
+}
+
+/* ==========================================================================
+   FORM SELECT & DATE INPUT ENHANCEMENTS
+   ========================================================================== */
+.form-input-wrapper select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.25rem center;
+  background-size: 16px;
+  cursor: pointer;
+}
+
+.form-input-wrapper input,
+.form-input-wrapper select,
+.form-input-wrapper textarea {
+  width: 100%;
+  padding: 0.95rem 1.25rem;
+  border-radius: 9px;
+  border: 1.5px solid var(--stroke-clean);
+  background: var(--bg-pure);
+  font-family: var(--font);
+  font-size: 0.97rem;
+  color: var(--text-main);
+  outline: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.form-input-wrapper input:focus,
+.form-input-wrapper select:focus,
+.form-input-wrapper textarea:focus {
+  border-color: var(--stroke-active);
+  box-shadow: 0 0 0 4px rgba(10, 88, 255, 0.1);
+}
+
+/* ==========================================================================
+   DATE INPUT POLISH
+   ========================================================================== */
+.form-input-wrapper input[type="date"] {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Custom styling for native date picker calendar icon appearance in modern browsers */
+.form-input-wrapper input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(0.4);
+  transition: filter 0.2s ease;
+}
+
+.form-input-wrapper
+  input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  filter: invert(0.1) sepia(1) saturate(5) hue-rotate(200deg); /* Shifts to match brand blue on hover */
 }
 
 /* ==========================================================================

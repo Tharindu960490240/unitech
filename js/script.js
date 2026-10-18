@@ -249,3 +249,59 @@ const yearsElement = document.getElementById("years-of-operation");
 if (yearsElement) {
   yearsElement.textContent = new Date().getFullYear() - 2021 + "+";
 }
+
+// 10. Quotation Form Submission Handling
+const quotationForm = document.getElementById("quotationForm");
+if (quotationForm) {
+  quotationForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const quoteSuccessAlert = document.getElementById("quoteSuccessAlert");
+    const quoteErrorAlert = document.getElementById("quoteErrorAlert");
+    const submitQuoteButton = document.getElementById("btn-submit-quote");
+
+    if (quoteSuccessAlert) quoteSuccessAlert.style.display = "none";
+    if (quoteErrorAlert) quoteErrorAlert.style.display = "none";
+    if (submitQuoteButton) submitQuoteButton.disabled = true;
+
+    try {
+      const response = await fetch(this.action, {
+        method: "POST",
+        body: new FormData(this),
+        headers: { Accept: "application/json" },
+      });
+
+      if (response.ok) {
+        this.reset();
+        this.style.display = "none";
+        quoteSuccessAlert.style.display = "block";
+        setTimeout(() => {
+          this.style.display = "block";
+          quoteSuccessAlert.style.display = "none";
+        }, 3000);
+      } else {
+        throw new Error();
+      }
+    } catch (error) {
+      this.style.display = "none";
+      quoteErrorAlert.style.display = "block";
+      setTimeout(() => {
+        this.style.display = "block";
+        quoteErrorAlert.style.display = "none";
+      }, 3000);
+    } finally {
+      if (submitQuoteButton) submitQuoteButton.disabled = false;
+    }
+  });
+}
+
+// 11. Set Minimum Booking Date to 1 Week From Today
+const bookingDateInput = document.getElementById("bookingDate");
+if (bookingDateInput) {
+  const today = new Date();
+  // Add 7 days to current date
+  today.setDate(today.getDate() + 7);
+
+  // Format as YYYY-MM-DD for the HTML date input
+  const minDateString = today.toISOString().split("T")[0];
+  bookingDateInput.setAttribute("min", minDateString);
+}
