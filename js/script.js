@@ -309,4 +309,3 @@ if (bookingDateInput) {
   const minDateString = `${yyyy}-${mm}-${dd}`;
   bookingDateInput.setAttribute("min", minDateString);
 }
-X;
