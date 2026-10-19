@@ -103,7 +103,7 @@ body {
   box-shadow: var(--shadow-md);
   list-style: none;
   display: none; /* Hidden by default */
-  min-width: 200px;
+  min-width: 300px;
   z-index: 1000;
 }
 
