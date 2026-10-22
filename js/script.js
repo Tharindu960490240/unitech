@@ -72,10 +72,7 @@ const footerHTML = `
       <h4>Contact Us</h4>
 
       <ul class="contact-details">
-        <li>
-          <i data-lucide="phone"></i>
-          <a href="tel:+61415661770">+61 415 661 770</a>
-        </li>
+
 
         <li>
           <i data-lucide="mail"></i>

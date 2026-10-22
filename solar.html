@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Security Systems | Unitech Networks</title>
+    <title>Solar & Battery Solutions | Unitech Networks</title>
     <link rel="stylesheet" href="../css/style.css" />
     <link
       rel="stylesheet"
@@ -30,7 +30,10 @@
           </p>
         </div>
         <div class="service-hero-image">
-          <img src="../img/solar/solar_hero.jpg" alt="Solar and Batery Services" />
+          <img
+            src="../img/solar/solar_hero.jpg"
+            alt="Solar and Battery Services"
+          />
         </div>
       </section>
 
@@ -136,10 +139,7 @@
 
         <article class="service-box">
           <div class="service-img">
-            <img
-              src="../img/solar/advice.jpg"
-              alt="Energy Efficiency Advice"
-            />
+            <img src="../img/solar/advice.jpg" alt="Energy Efficiency Advice" />
           </div>
           <div class="service-body">
             <div class="box-header">
@@ -164,6 +164,230 @@
           and accredited professionals.
         </p>
       </div>
+      
+      <!-- Quotation Request Form Section -->
+      <section class="communication-terminal-section" id="quote-request">
+        <div
+          class="terminal-grid-layout"
+          style="grid-template-columns: 1fr; max-width: 800px; margin: 0 auto"
+        >
+          <div class="terminal-form-side">
+            <div class="form-card-container">
+              <div class="text-center" style="margin-bottom: 2rem">
+                <span class="section-badge">Get a Quote</span>
+                <h3>Request a Quotation</h3>
+                <p class="form-desc-text">
+                  Fill out the form below with your project details and our team
+                  will get back to you promptly to confirm your booking and
+                  provide an estimate.
+                </p>
+              </div>
+
+              <form
+                id="quotationForm"
+                action="https://formspree.io/f/xbdbwwbe"
+                method="POST"
+                class="clean-enterprise-form"
+              >
+                <div class="form-dual-row">
+                  <div class="form-input-wrapper">
+                    <label for="firstName"
+                      >First Name <span class="required-star">*</span></label
+                    >
+                    <input
+                      type="text"
+                      id="firstName"
+                      name="First Name"
+                      required
+                      placeholder="John"
+                    />
+                  </div>
+                  <div class="form-input-wrapper">
+                    <label for="lastName"
+                      >Last Name <span class="required-star">*</span></label
+                    >
+                    <input
+                      type="text"
+                      id="lastName"
+                      name="Last Name"
+                      required
+                      placeholder="Doe"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-dual-row">
+                  <div class="form-input-wrapper">
+                    <label for="quoteEmail"
+                      >Email Address <span class="required-star">*</span></label
+                    >
+                    <input
+                      type="email"
+                      id="quoteEmail"
+                      name="Email"
+                      required
+                      placeholder="you@example.com.au"
+                    />
+                  </div>
+                  <div class="form-input-wrapper">
+                    <label for="quotePhone"
+                      >Phone Number <span class="required-star">*</span></label
+                    >
+                    <input
+                      type="tel"
+                      id="quotePhone"
+                      name="Phone Number"
+                      required
+                      placeholder="+61 400 000 000"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-dual-row">
+                  <div class="form-input-wrapper">
+                    <label for="serviceType"
+                      >Type of Service required?
+                      <span class="required-star">*</span></label
+                    >
+                    <select id="serviceType" name="Service Type" required>
+                      <option value="" disabled selected>
+                        Select required service...
+                      </option>
+                      <option value="On-Grid Solar System">
+                        On-Grid Solar System
+                      </option>
+                      <option value="Off-Grid Solar Solution">
+                        Off-Grid Solar Solution
+                      </option>
+                      <option value="Hybrid Solar System">
+                        Hybrid Solar System
+                      </option>
+                      <option value="Agricultural Solar System">
+                        Agricultural Solar System
+                      </option>
+                      <option value="Solar Hot Water System">
+                        Solar Hot Water System
+                      </option>
+                      <option value="Solar CCTV Solutions">
+                        Solar CCTV Solutions
+                      </option>
+                      <option value="Solar Street Lighting">
+                        Solar Street Lighting
+                      </option>
+                      <option value="Electrical System Design & Installation">
+                        Electrical System Design & Installation
+                      </option>
+                      <option value="High Voltage System Design">
+                        High Voltage System Design
+                      </option>
+                      <option value="Energy Efficiency Audit">
+                        Energy Efficiency Audit
+                      </option>
+                      <option value="Civil Engineering Consultation">
+                        Civil Engineering Consultation
+                      </option>
+                      <option value="Structural Design & Analysis">
+                        Structural Design & Analysis
+                      </option>
+                      <option value="Construction Management">
+                        Construction Management
+                      </option>
+                      <option value="Technical Feasibility Study">
+                        Technical Feasibility Study
+                      </option>
+                      <option value="Project Planning & Management">
+                        Project Planning & Management
+                      </option>
+                      <option value="Regulatory Compliance Guidance">
+                        Regulatory Compliance Guidance
+                      </option>
+                      <option value="Land Surveying">Land Surveying</option>
+                      <option value="Real Estate Development Consultation">
+                        Real Estate Development Consultation
+                      </option>
+                      <option value="Export of Engineering Solutions">
+                        Export of Engineering Solutions
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="form-input-wrapper">
+                    <label for="bookingDate"
+                      >Approx Booking Date
+                      <span class="required-star">*</span></label
+                    >
+                    <input
+                      type="date"
+                      id="bookingDate"
+                      name="Approx Booking Date"
+                      required
+                    />
+                    <small
+                      style="
+                        color: var(--text-muted);
+                        font-size: 0.78rem;
+                        margin-top: 2px;
+                      "
+                      >Minimum 1 week notice required. We will contact you to
+                      confirm your date.</small
+                    >
+                  </div>
+                </div>
+
+                <div class="form-input-wrapper">
+                  <label for="quoteMessage"
+                    >Please provide details of your Service enquiry?
+                    <span class="required-star">*</span></label
+                  >
+                  <textarea
+                    id="quoteMessage"
+                    name="Message"
+                    required
+                    placeholder="Tell us about your project requirements..."
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  class="btn-submit-form"
+                  id="btn-submit-quote"
+                >
+                  <span>Submit Quotation Request</span>
+                  <i data-lucide="send"></i>
+                </button>
+              </form>
+
+              <!-- Success Alert -->
+              <div
+                id="quoteSuccessAlert"
+                class="success-alert-container"
+                style="display: none"
+              >
+                <i data-lucide="check-circle"></i>
+                <h3>Quotation Request Sent!</h3>
+                <p>
+                  Thanks for reaching out. Our team will review your
+                  requirements and be in touch with you shortly.
+                </p>
+              </div>
+
+              <!-- Error Alert -->
+              <div
+                id="quoteErrorAlert"
+                class="error-alert-container"
+                style="display: none"
+              >
+                <i data-lucide="alert-circle"></i>
+                <h3>Submission Failed</h3>
+                <p>
+                  There was an issue sending your request. Please try again
+                  later.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <div id="footer-placeholder"></div>
