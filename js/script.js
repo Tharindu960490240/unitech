@@ -1,7 +1,7 @@
-// Initialize Lucide icons
-lucide.createIcons();
+// ==========================================================================
+// Unitech Networks - shared header/footer, nav behaviour, forms, counters
+// ==========================================================================
 
-// components.js
 const headerHTML = `
 <header class="site-header">
   <div class="nav-container">
@@ -9,21 +9,16 @@ const headerHTML = `
       <img src="../img/logo/logo.png" alt="Unitech Networks" class="main-logo-img" />
     </a>
 
-    <button class="menu-toggle-btn" aria-label="Toggle Navigation">
+    <button class="menu-toggle-btn" aria-label="Toggle Navigation" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
 
     <nav class="navigation-gate">
       <ul class="menu-links">
-
         <li><a href="index.html#home">Home</a></li>
         <li><a href="index.html#about">About</a></li>
-
-       <li class="dropdown">
-          <a href="#" class="dropdown-trigger">
-            Services <i data-lucide="chevron-down"></i>
-          </a>
-
+        <li class="dropdown">
+          <a href="#" class="dropdown-trigger">Services <i data-lucide="chevron-down"></i></a>
           <ul class="dropdown-menu">
             <li><a href="telecommunications.html"><i data-lucide="radio"></i> Telecommunications</a></li>
             <li><a href="civils.html"><i data-lucide="hard-hat"></i> Civil Works</a></li>
@@ -31,13 +26,7 @@ const headerHTML = `
             <li><a href="solar.html"><i data-lucide="sun"></i> Solar & Battery Solutions</a></li>
           </ul>
         </li>
-
-        <li>
-          <a href="index.html#contact" class="nav-action-cta">
-            Contact Us
-          </a>
-        </li>
-
+        <li><a href="index.html#contact" class="nav-action-cta">Contact Us</a></li>
       </ul>
     </nav>
   </div>
@@ -45,67 +34,51 @@ const headerHTML = `
 
 const footerHTML = `
 <footer class="corporate-footer">
-
   <div class="footer-grid">
-
     <div class="footer-col brand-col">
-      <img src="../img/logo/logo.png" alt="Unitech Networks" class="footer-logo">
-
-      <p>
-        Providing enterprise-grade infrastructure and engineering
-        solutions across Victoria, Australia since 2021.
-      </p>
+      <img src="../img/logo/logo.png" alt="Unitech Networks" class="footer-logo" />
+      <p>Providing enterprise-grade infrastructure and engineering solutions across Victoria, Australia since 2021.</p>
     </div>
 
     <div class="footer-col">
       <h4>Our Services</h4>
-
       <ul class="contact-details">
         <li><i data-lucide="radio"></i> <a href="telecommunications.html">Telecommunications</a></li>
         <li><i data-lucide="hard-hat"></i> <a href="civils.html">Civil Works</a></li>
-        <li><i data-lucide="cctv"></i><a href="security.html"> CCTV & Security Solutions</a></li>
-        <li><i data-lucide="sun"></i><a href="solar.html"> Solar & Battery Solutions</a></li>
+        <li><i data-lucide="cctv"></i> <a href="security.html">CCTV & Security Solutions</a></li>
+        <li><i data-lucide="sun"></i> <a href="solar.html">Solar & Battery Solutions</a></li>
       </ul>
     </div>
 
     <div class="footer-col">
       <h4>Contact Us</h4>
-
       <ul class="contact-details">
-
-
         <li>
           <i data-lucide="mail"></i>
-          <a href="mailto:admin@unitechnetworks.com.au">
-            admin@unitechnetworks.com.au
-          </a>
+          <a href="mailto:admin@unitechnetworks.com.au">admin@unitechnetworks.com.au</a>
         </li>
-
         <li class="social-link-item">
-          <a href="https://www.linkedin.com/company/unitechnetworks/" target="_blank">
-            <i class="fa-brands fa-linkedin"></i>
-            <span>LinkedIn</span>
-          </a>
+          <i class="fa-brands fa-linkedin"></i>
+          <a href="https://www.linkedin.com/company/unitechnetworks/" target="_blank" rel="noopener">
+          LinkedIn</a>
         </li>
       </ul>
     </div>
-
   </div>
 
   <div class="footer-bottom">
     <p>© 2026 Unitech Networks. All Rights Reserved.</p>
     <p class="credit">Built by T&S Private Limited</p>
   </div>
-
 </footer>`;
 
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Inject components
+  // 1. Inject shared components
   document.getElementById("header-placeholder").innerHTML = headerHTML;
   document.getElementById("footer-placeholder").innerHTML = footerHTML;
   lucide.createIcons();
 
-  // 2. Define UI variables AFTER injection
+  // 2. UI references (after injection)
   const siteHeader = document.querySelector(".site-header");
   const scrollToTopBtn = document.getElementById("scrollToTopBtn");
   const menuToggleBtn = document.querySelector(".menu-toggle-btn");
@@ -113,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuNavLinks = document.querySelectorAll(".menu-links a");
   const dropdownTrigger = document.querySelector(".dropdown-trigger");
 
-  // 3. Header Scroll Behavior
+  // 3. Header scroll behaviour + back-to-top
   window.addEventListener(
     "scroll",
     () => {
@@ -123,25 +96,22 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     { passive: true },
   );
-
   if (scrollToTopBtn) {
-    scrollToTopBtn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+    scrollToTopBtn.addEventListener("click", () =>
+      window.scrollTo({ top: 0, behavior: "smooth" }),
+    );
   }
 
-  // 4. Active Navigation Link Logic
-  const currentPath = window.location.pathname;
+  // 4. Active navigation link (service pages only, so Home/About don't all light up)
+  const currentPage = window.location.pathname.split("/").pop();
   menuNavLinks.forEach((link) => {
-    if (
-      link.getAttribute("href") &&
-      currentPath.includes(link.getAttribute("href").replace("../html/", ""))
-    ) {
+    const href = (link.getAttribute("href") || "").split("#")[0];
+    if (href && href !== "index.html" && href === currentPage) {
       link.classList.add("active-nav");
     }
   });
 
-  // 5. Mobile Nav Toggle Function
+  // 5. Mobile nav toggle
   function toggleMenu() {
     const expanded = menuToggleBtn.getAttribute("aria-expanded") === "true";
     menuToggleBtn.setAttribute("aria-expanded", String(!expanded));
@@ -149,160 +119,134 @@ document.addEventListener("DOMContentLoaded", () => {
     navigationGate.classList.toggle("open");
     document.body.style.overflow = !expanded ? "hidden" : "";
 
-    // Reset dropdown height when menu closes
     if (expanded) {
       navigationGate.classList.remove("dropdown-expanded");
       const menu = dropdownTrigger?.nextElementSibling;
-      if (menu) menu.style.display = "none";
+      if (menu) menu.style.display = "";
     }
   }
-
   if (menuToggleBtn) menuToggleBtn.addEventListener("click", toggleMenu);
 
-  // 6. Navigation Link Closing Logic (FIXED: Ignores Dropdown Trigger)
+  // 6. Close mobile menu when a normal link is clicked
   menuNavLinks.forEach((link) => {
     link.addEventListener("click", () => {
-      const isDropdownTrigger = link.classList.contains("dropdown-trigger");
-      // Close menu only if it's not the trigger and the menu is currently open
-      if (!isDropdownTrigger && navigationGate?.classList.contains("open")) {
+      const isTrigger = link.classList.contains("dropdown-trigger");
+      if (!isTrigger && navigationGate?.classList.contains("open"))
         toggleMenu();
-      }
     });
   });
 
-  // 7. Dropdown Logic (Mobile Specific)
+  // 7. Services dropdown (mobile tap to expand)
   if (dropdownTrigger) {
-    // Desktop Hover logic
-    dropdownTrigger.addEventListener("mouseenter", () => {
-      if (window.innerWidth < 1024) {
-        navigationGate.classList.add("dropdown-expanded");
-      }
-    });
-
-    dropdownTrigger.addEventListener("mouseleave", () => {
-      if (window.innerWidth < 1024) {
-        navigationGate.classList.remove("dropdown-expanded");
-      }
-    });
-
     dropdownTrigger.addEventListener("click", (e) => {
-      if (window.innerWidth < 1024) {
+      if (window.innerWidth <= 768) {
         e.preventDefault();
         const menu = dropdownTrigger.nextElementSibling;
         const isOpen = menu.style.display === "block";
         menu.style.display = isOpen ? "none" : "block";
         navigationGate.classList.toggle("dropdown-expanded", !isOpen);
+      } else {
+        e.preventDefault();
       }
     });
   }
 
-  // 8. Form Submission Handling
-  const unitechForm = document.getElementById("unitechForm");
-  if (unitechForm) {
-    unitechForm.addEventListener("submit", async function (e) {
-      e.preventDefault();
-      const formSuccessAlert = document.getElementById("formSuccessAlert");
-      const formErrorAlert = document.getElementById("formErrorAlert");
-      const submitButton = document.getElementById("btn-submit");
+  // 8. Reusable Formspree handler (contact form + quotation form)
+  function wireForm(formId, successId, errorId, buttonId) {
+    const form = document.getElementById(formId);
+    if (!form) return;
+    const success = document.getElementById(successId);
+    const error = document.getElementById(errorId);
+    const button = document.getElementById(buttonId);
 
-      if (formSuccessAlert) formSuccessAlert.style.display = "none";
-      if (formErrorAlert) formErrorAlert.style.display = "none";
-      if (submitButton) submitButton.disabled = true;
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (success) success.style.display = "none";
+      if (error) error.style.display = "none";
+      if (button) button.disabled = true;
 
       try {
-        const response = await fetch(this.action, {
+        const response = await fetch(form.action, {
           method: "POST",
-          body: new FormData(this),
+          body: new FormData(form),
           headers: { Accept: "application/json" },
         });
-
-        if (response.ok) {
-          this.reset();
-          this.style.display = "none";
-          formSuccessAlert.style.display = "block";
-          setTimeout(() => {
-            this.style.display = "block";
-            formSuccessAlert.style.display = "none";
-          }, 3000);
-        } else {
-          throw new Error();
-        }
-      } catch (error) {
-        this.style.display = "none";
-        formErrorAlert.style.display = "block";
+        if (!response.ok) throw new Error("Request failed");
+        form.reset();
+        form.style.display = "none";
+        success.style.display = "block";
         setTimeout(() => {
-          this.style.display = "block";
-          formErrorAlert.style.display = "none";
-        }, 3000);
+          form.style.display = "";
+          success.style.display = "none";
+        }, 4000);
+      } catch (err) {
+        form.style.display = "none";
+        error.style.display = "block";
+        setTimeout(() => {
+          form.style.display = "";
+          error.style.display = "none";
+        }, 4000);
       } finally {
-        if (submitButton) submitButton.disabled = false;
+        if (button) button.disabled = false;
       }
     });
   }
-});
+  wireForm("unitechForm", "formSuccessAlert", "formErrorAlert", "btn-submit");
+  wireForm(
+    "quotationForm",
+    "quoteSuccessAlert",
+    "quoteErrorAlert",
+    "btn-submit-quote",
+  );
 
-// 9. Footer Years Calculation
-const yearsElement = document.getElementById("years-of-operation");
-if (yearsElement) {
-  yearsElement.textContent = new Date().getFullYear() - 2021 + "+";
-}
+  // 9. Minimum booking date = today + 7 days (local timezone)
+  const bookingDateInput = document.getElementById("bookingDate");
+  if (bookingDateInput) {
+    const d = new Date();
+    d.setDate(d.getDate() + 7);
+    const pad = (n) => String(n).padStart(2, "0");
+    bookingDateInput.setAttribute(
+      "min",
+      `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`,
+    );
+  }
 
-// 10. Quotation Form Submission Handling
-const quotationForm = document.getElementById("quotationForm");
-if (quotationForm) {
-  quotationForm.addEventListener("submit", async function (e) {
-    e.preventDefault();
-    const quoteSuccessAlert = document.getElementById("quoteSuccessAlert");
-    const quoteErrorAlert = document.getElementById("quoteErrorAlert");
-    const submitQuoteButton = document.getElementById("btn-submit-quote");
+  // 10. Animated stat counters (start when scrolled into view)
+  const yearsEl = document.getElementById("years-of-operation");
+  if (yearsEl) yearsEl.dataset.target = String(new Date().getFullYear() - 2021);
 
-    if (quoteSuccessAlert) quoteSuccessAlert.style.display = "none";
-    if (quoteErrorAlert) quoteErrorAlert.style.display = "none";
-    if (submitQuoteButton) submitQuoteButton.disabled = true;
-
-    try {
-      const response = await fetch(this.action, {
-        method: "POST",
-        body: new FormData(this),
-        headers: { Accept: "application/json" },
-      });
-
-      if (response.ok) {
-        this.reset();
-        this.style.display = "none";
-        quoteSuccessAlert.style.display = "block";
-        setTimeout(() => {
-          this.style.display = "block";
-          quoteSuccessAlert.style.display = "none";
-        }, 3000);
-      } else {
-        throw new Error();
+  const counters = document.querySelectorAll(".stat-number[data-target]");
+  if (counters.length) {
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const run = (el) => {
+      const target = Number(el.dataset.target);
+      const suffix = el.dataset.suffix || "";
+      if (reduceMotion || target === 0) {
+        el.textContent = target + suffix;
+        return;
       }
-    } catch (error) {
-      this.style.display = "none";
-      quoteErrorAlert.style.display = "block";
-      setTimeout(() => {
-        this.style.display = "block";
-        quoteErrorAlert.style.display = "none";
-      }, 3000);
-    } finally {
-      if (submitQuoteButton) submitQuoteButton.disabled = false;
-    }
-  });
-}
-
-// 11. Set Minimum Booking Date to 1 Week From Today (Local Timezone Fix)
-const bookingDateInput = document.getElementById("bookingDate");
-if (bookingDateInput) {
-  const today = new Date();
-  // Add 7 days to current date
-  today.setDate(today.getDate() + 7);
-
-  // Use local timezone values instead of toISOString() (UTC)
-  const yyyy = today.getFullYear();
-  const mm = String(today.getMonth() + 1).padStart(2, "0"); // Months are 0-indexed
-  const dd = String(today.getDate()).padStart(2, "0");
-
-  const minDateString = `${yyyy}-${mm}-${dd}`;
-  bookingDateInput.setAttribute("min", minDateString);
-}
+      const duration = 1400;
+      const start = performance.now();
+      const tick = (now) => {
+        const p = Math.min((now - start) / duration, 1);
+        el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            run(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.4 },
+    );
+    counters.forEach((c) => observer.observe(c));
+  }
+});

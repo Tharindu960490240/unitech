@@ -4,13 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      Unitech Networks | Telecommunications Infrastructure & Engineering
+      Unitech Networks | Telecommunications, Civils, Security & Solar
     </title>
     <meta
       name="description"
-      content="Established in 2021, Unitech Networks is a leading telecommunications service provider in Australia. Partnered with NBN, Telstra, Optus, and Tier-1 infrastructure crews."
+      content="Established in 2021, Unitech Networks delivers telecommunications, civil works, CCTV & security and solar & battery solutions across Victoria, Australia."
     />
-
     <link rel="stylesheet" href="../css/style.css" />
     <link
       rel="stylesheet"
@@ -22,11 +21,9 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@0.469.0"></script>
   </head>
   <body>
-    <!-- ===== HEADER ===== -->
     <div id="header-placeholder"></div>
 
     <main>
@@ -36,30 +33,303 @@
         <div class="hero-surface">
           <div class="hero-left-col">
             <div class="establishment-tag">
-              <span class="pulse-dot"></span> Established in 2021
+              <span class="pulse-dot"></span> Serving Victoria since 2021
             </div>
             <h1 class="hero-headline">
-              Discover the<br />
-              <span class="highlight-blue">Unitech Networks</span><br />
-              Difference.
+              Telecom, civils, security and solar from
+              <span class="highlight-blue">one trusted team.</span>
             </h1>
             <p class="hero-lead">
-              A leading Australian telecommunications service provider
-              delivering cutting-edge infrastructure. We partner with NBN,
-              Telstra, Optus, and other major carriers to ensure top-tier
-              connectivity nationwide.
+              Unitech Networks builds and maintains the infrastructure homes and
+              businesses rely on. We work with NBN, Telstra, Optus and other
+              major carriers to keep Victoria connected, secure and powered.
             </p>
             <div class="hero-actions-row">
-              <a href="#services" class="btn-primary-tech">
-                <span>Our Services</span>
+              <a href="#contact" class="btn-primary-tech">
+                <span>Contact Us</span>
                 <i data-lucide="arrow-right"></i>
               </a>
-              <a href="#contact" class="btn-secondary-tech">Get in Touch</a>
+              <a href="#services" class="btn-secondary-tech"
+                >Explore Services</a
+              >
             </div>
           </div>
 
           <div class="hero-right-col">
-            <div class="vision-mission-card-stack">
+            <div class="hero-mosaic">
+              <figure>
+                <img
+                  src="../img/telecom/telecom_hero.jpg"
+                  alt="Telecommunications crew"
+                />
+                <figcaption>Telecommunications</figcaption>
+              </figure>
+              <figure>
+                <img src="../img/civil/civil_hero.jpg" alt="Civil works" />
+                <figcaption>Civil Works</figcaption>
+              </figure>
+              <figure>
+                <img src="../img/cctv/cctv-hero.jpg" alt="CCTV and security" />
+                <figcaption>CCTV & Security</figcaption>
+              </figure>
+              <figure>
+                <img
+                  src="../img/solar/solar_hero.jpg"
+                  alt="Solar and battery"
+                />
+                <figcaption>Solar & Battery</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TRUST STRIP ===== -->
+      <section class="trust-strip" aria-label="Why customers trust us">
+        <div class="trust-inner">
+          <div class="trust-item">
+            <i data-lucide="badge-check"></i> Licensed Victorian cablers
+          </div>
+          <div class="trust-item">
+            <i data-lucide="handshake"></i> Carrier partner crews
+          </div>
+          <div class="trust-item">
+            <i data-lucide="hard-hat"></i> Safety-first delivery
+          </div>
+          <div class="trust-item">
+            <i data-lucide="headset"></i> 24/7 on-call support
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== STATS ===== -->
+      <section class="stats-bar" aria-label="Unitech Networks in numbers">
+        <div class="stats-inner">
+          <div class="stat-item">
+            <span
+              id="years-of-operation"
+              class="stat-number"
+              data-target="5"
+              data-suffix="+"
+              >0</span
+            >
+            <span class="stat-label">Years of Operation</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="4">0</span>
+            <span class="stat-label">Service Divisions</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="100" data-suffix="%">0</span>
+            <span class="stat-label">Licensed & Certified</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">24/7</span>
+            <span class="stat-label">On-Call Support</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SERVICES ===== -->
+      <section id="services" class="home-services">
+        <div class="matrix-header-wrap text-center">
+          <span class="section-badge">What We Do</span>
+          <h2 class="block-title">Four divisions, one accountable team</h2>
+          <p class="section-intro">
+            From fibre in the ground to panels on the roof, we plan, build and
+            support the work under one roof.
+          </p>
+        </div>
+        <div class="services-grid">
+          <article class="service-box">
+            <div class="service-img">
+              <img
+                src="../img/telecom/telecom_hero.jpg"
+                alt="Telecommunications"
+              />
+            </div>
+            <div class="service-body">
+              <div class="box-header">
+                <span class="index">Telecom</span>
+                <div class="icon-wrap"><i data-lucide="radio"></i></div>
+              </div>
+              <h3>Telecommunications</h3>
+              <p>
+                NBN installs, fibre hauling and splicing, OTDR testing, network
+                builds and ongoing maintenance.
+              </p>
+              <a class="link-arrow" href="telecommunications.html"
+                >View services <i data-lucide="arrow-right"></i
+              ></a>
+            </div>
+          </article>
+          <article class="service-box">
+            <div class="service-img">
+              <img src="../img/civil/civil_hero.jpg" alt="Civil works" />
+            </div>
+            <div class="service-body">
+              <div class="box-header">
+                <span class="index">Civils</span>
+                <div class="icon-wrap"><i data-lucide="hard-hat"></i></div>
+              </div>
+              <h3>Civil Works</h3>
+              <p>
+                Trenching, pit and pipe, underground conduit, excavation and
+                reinstatement for utility projects.
+              </p>
+              <a class="link-arrow" href="civils.html"
+                >View services <i data-lucide="arrow-right"></i
+              ></a>
+            </div>
+          </article>
+          <article class="service-box">
+            <div class="service-img">
+              <img src="../img/cctv/cctv-hero.jpg" alt="CCTV and security" />
+            </div>
+            <div class="service-body">
+              <div class="box-header">
+                <span class="index">Security</span>
+                <div class="icon-wrap"><i data-lucide="cctv"></i></div>
+              </div>
+              <h3>CCTV & Security</h3>
+              <p>
+                CCTV, alarms, video intercoms and access control for homes and
+                commercial sites.
+              </p>
+              <a class="link-arrow" href="security.html"
+                >View services <i data-lucide="arrow-right"></i
+              ></a>
+            </div>
+          </article>
+          <article class="service-box">
+            <div class="service-img">
+              <img src="../img/solar/solar_hero.jpg" alt="Solar and battery" />
+            </div>
+            <div class="service-body">
+              <div class="box-header">
+                <span class="index">Energy</span>
+                <div class="icon-wrap"><i data-lucide="sun"></i></div>
+              </div>
+              <h3>Solar & Battery</h3>
+              <p>
+                Residential and commercial solar, battery storage and EV
+                chargers through trusted install partners.
+              </p>
+              <a class="link-arrow" href="solar.html"
+                >View services <i data-lucide="arrow-right"></i
+              ></a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===== WHY US ===== -->
+      <section class="why-us">
+        <div class="why-grid">
+          <div class="why-image">
+            <img
+              src="../img/telecom/network.jpg"
+              alt="Unitech Networks team on site"
+            />
+          </div>
+          <div>
+            <span class="section-badge">Why Choose Us</span>
+            <h2 class="block-title">
+              Licensed, experienced and easy to deal with
+            </h2>
+            <div class="why-points">
+              <div class="why-point">
+                <i data-lucide="badge-check"></i>
+                <div>
+                  <h4>Licensed cablers in Victoria</h4>
+                  <p>
+                    Telecommunications installs of any scale by licensed
+                    technicians.
+                  </p>
+                </div>
+              </div>
+              <div class="why-point">
+                <i data-lucide="layers"></i>
+                <div>
+                  <h4>One team, start to finish</h4>
+                  <p>
+                    Survey, quote, install and handover handled in one place.
+                  </p>
+                </div>
+              </div>
+              <div class="why-point">
+                <i data-lucide="shield-check"></i>
+                <div>
+                  <h4>Safety and compliance</h4>
+                  <p>
+                    Every project is risk-assessed and delivered to relevant
+                    standards.
+                  </p>
+                </div>
+              </div>
+              <div class="why-point">
+                <i data-lucide="clock"></i>
+                <div>
+                  <h4>On time, every time</h4>
+                  <p>
+                    Flexible delivery wherever and whenever our clients need it.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <a href="#contact" class="btn-primary-tech"
+              ><span>Contact Us</span><i data-lucide="arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PROCESS ===== -->
+      <section class="process">
+        <div class="matrix-header-wrap text-center">
+          <span class="section-badge">Our Process</span>
+          <h2 class="block-title">A simple path from enquiry to handover</h2>
+        </div>
+        <div class="process-grid">
+          <div class="process-card">
+            <span class="step-no">1</span>
+            <h3>Tell us what you need</h3>
+            <p>
+              Send an enquiry. We review your requirements and confirm a time to
+              talk or visit.
+            </p>
+          </div>
+          <div class="process-card">
+            <span class="step-no">2</span>
+            <h3>Contact Us</h3>
+            <p>
+              You receive a practical scope and estimate, with no surprises on
+              what is included.
+            </p>
+          </div>
+          <div class="process-card">
+            <span class="step-no">3</span>
+            <h3>We install and hand over</h3>
+            <p>
+              Our crew completes the work, tests it and walks you through the
+              result.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== ABOUT ===== -->
+      <section id="about" class="corporate-identity-block">
+        <div class="split-layout-grid">
+          <div class="sticky-meta-column">
+            <span class="section-badge">About Us</span>
+            <h2 class="block-title">
+              Committed to excellence and technological advancement.
+            </h2>
+            <div class="vm-stack">
               <div class="vm-card accent-blue">
                 <div class="vm-icon-row">
                   <div class="icon-circle"><i data-lucide="target"></i></div>
@@ -82,77 +352,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <!-- ===== PARTNER STRIP ===== -->
-      <section class="ecosystem-ticker">
-        <div class="ticker-inner-wrap">
-          <p class="ticker-title">Carrier Partners</p>
-          <div class="carrier-tags-row">
-            <div class="carrier-tag-item">
-              <i data-lucide="activity"></i><span>NBN</span>
-            </div>
-            <div class="carrier-tag-item">
-              <i data-lucide="cpu"></i><span>Telstra</span>
-            </div>
-            <div class="carrier-tag-item">
-              <i data-lucide="radio"></i><span>Optus</span>
-            </div>
-            <div class="carrier-tag-item">
-              <i data-lucide="shield-check"></i><span>TPG</span>
-            </div>
-            <!-- Additional Partners -->
-            <div class="carrier-tag-item">
-              <i data-lucide="hard-hat"></i><span>Downer Group</span>
-            </div>
-            <div class="carrier-tag-item">
-              <i data-lucide="settings"></i><span>Fulton Hogan</span>
-            </div>
-            <div class="carrier-tag-item">
-              <i data-lucide="briefcase"></i><span>Ventia</span>
-            </div>
-            <div class="carrier-tag-item">
-              <i data-lucide="zap"></i><span>Service Stream</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===== STATS BAR ===== -->
-      <section class="stats-bar">
-        <div class="stats-inner">
-          <div class="stat-item">
-            <span id="years-of-operation" class="stat-number">0</span>
-            <span class="stat-label">Years of Operation</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <span class="stat-number">10</span>
-            <span class="stat-label">Service Divisions</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <span class="stat-number">100%</span>
-            <span class="stat-label">Licensed & Certified</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <span class="stat-number">24/7</span>
-            <span class="stat-label">On-Call Support</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===== ABOUT ===== -->
-      <section id="about" class="corporate-identity-block">
-        <div class="split-layout-grid">
-          <div class="sticky-meta-column">
-            <span class="section-badge">About Us</span>
-            <h2 class="block-title">
-              Committed to excellence & technological advancement.
-            </h2>
-          </div>
           <div class="narrative-content-column">
             <p class="paragraph-lead">
               Dedicated to enhancing communication networks across the nation
@@ -166,35 +365,30 @@
                 </div>
                 <p>
                   Licensed cablers in Victoria with the capability to install
-                  telecommunications cables of any scale, ensuring comprehensive
-                  service delivery.
+                  telecommunications cables of any scale.
                 </p>
               </div>
-
               <div class="cap-mini-box">
                 <div class="box-header">
                   <i data-lucide="git-commit"></i>
                   <h4>Wireline Capabilities</h4>
                 </div>
                 <p>
-                  Specialising in building and maintaining telco networks -
-                  aerial and underground cable installation and splicing across
-                  Telstra, NBN, Optus, and more.
+                  Building and maintaining telco networks, with aerial and
+                  underground cable installation and splicing across Telstra,
+                  NBN, Optus and more.
                 </p>
               </div>
-
               <div class="cap-mini-box">
                 <div class="box-header">
                   <i data-lucide="smartphone"></i>
                   <h4>Device Installations</h4>
                 </div>
                 <p>
-                  Licensed telecommunications technicians proficient in
-                  installing devices of various sizes within NBN and Telstra
-                  networks.
+                  Licensed technicians proficient in installing devices of
+                  various sizes within NBN and Telstra networks.
                 </p>
               </div>
-
               <div class="cap-mini-box">
                 <div class="box-header">
                   <i data-lucide="share-2"></i>
@@ -202,22 +396,19 @@
                 </div>
                 <p>
                   Flexible service delivery wherever and whenever our clients
-                  need it - on time, every time.
+                  need it, on time, every time.
                 </p>
               </div>
-
               <div class="cap-mini-box">
                 <div class="box-header">
                   <i data-lucide="shield-check"></i>
                   <h4>Security Installations</h4>
                 </div>
                 <p>
-                  Professional installation of CCTV, alarm systems, and
-                  intercoms for both residential and commercial properties,
-                  ensuring total peace of mind.
+                  CCTV, alarm systems and intercoms for residential and
+                  commercial properties.
                 </p>
               </div>
-
               <div class="cap-mini-box">
                 <div class="box-header">
                   <i data-lucide="sun"></i>
@@ -225,8 +416,7 @@
                 </div>
                 <p>
                   Connecting homeowners and businesses with trusted solar and
-                  battery installation partners to reduce energy costs and
-                  improve efficiency.
+                  battery installation partners.
                 </p>
               </div>
             </div>
@@ -234,125 +424,55 @@
         </div>
       </section>
 
-      <!-- ===== VALUES ===== -->
-      <!-- <section id="values" class="corporate-values-section">
-        <div class="matrix-header-wrap text-center">
-          <span class="section-badge">Our Foundations</span>
-          <h2 class="block-title">Core Values</h2>
-        </div>
-        <div class="values-display-grid">
-          <div class="value-item-card">
-            <div class="value-icon-box"><i data-lucide="zap"></i></div>
-            <h3>Innovate</h3>
-            <p>
-              Introducing new technologies that enhance internet speed and
-              improve overall connectivity across Australia.
-            </p>
-          </div>
-          <div class="value-item-card">
-            <div class="value-icon-box"><i data-lucide="shield-alert"></i></div>
-            <h3>Ensure Safety</h3>
-            <p>
-              Complying with all safety regulations to protect our team and
-              preserve the environment during every operation.
-            </p>
-          </div>
-          <div class="value-item-card">
-            <div class="value-icon-box"><i data-lucide="award"></i></div>
-            <h3>Seek Excellence</h3>
-            <p>
-              Realising our full potential through creative effort, intelligent
-              execution, and strategic thinking.
-            </p>
-          </div>
-          <div class="value-item-card">
-            <div class="value-icon-box"><i data-lucide="scale"></i></div>
-            <h3>Act with Integrity</h3>
-            <p>
-              Doing the right thing - consistently and transparently - even in
-              the most challenging situations.
-            </p>
-          </div>
-        </div>
-      </section> -->
-
-      <!-- ===== MODERN PARTNER SECTION ===== -->
+      <!-- ===== PARTNERS ===== -->
       <section id="pastners" class="partners-hub">
         <div class="matrix-header-wrap text-center">
           <span class="section-badge">Working Together</span>
           <h2 class="block-title">Our Partners</h2>
         </div>
-        <div class="partners-container">
-          <div class="partners-grid">
-            <div class="partner-logo">
-              <img src="../img/home/downer.jpg" alt="Downer Group" />
-            </div>
-            <div class="partner-logo">
-              <img src="../img/home/nbn.jpg" alt="NBN" />
-            </div>
-            <div class="partner-logo">
-              <img src="../img/home/fh.jpg" alt="Fulton Hogan" />
-            </div>
-            <div class="partner-logo">
-              <img src="../img/home/telstra.jpg" alt="Telstra" />
-            </div>
-            <div class="partner-logo">
-              <img src="../img/home/ventia.jpg" alt="Ventia" />
-            </div>
-            <div class="partner-logo">
-              <img src="../img/home/optus.jpg" alt="Optus" />
-            </div>
-            <div class="partner-logo">
-              <img src="../img/home/ss.jpg" alt="Service Stream" />
-            </div>
-            <div class="partner-logo">
-              <img src="../img/home/tpg.jpg" alt="TPG" />
-            </div>
+        <div class="partners-grid">
+          <div class="partner-logo">
+            <img src="../img/home/downer.jpg" alt="Downer Group" />
+          </div>
+          <div class="partner-logo">
+            <img src="../img/home/nbn.jpg" alt="NBN" />
+          </div>
+          <div class="partner-logo">
+            <img src="../img/home/fh.jpg" alt="Fulton Hogan" />
+          </div>
+          <div class="partner-logo">
+            <img src="../img/home/telstra.jpg" alt="Telstra" />
+          </div>
+          <div class="partner-logo">
+            <img src="../img/home/ventia.jpg" alt="Ventia" />
+          </div>
+          <div class="partner-logo">
+            <img src="../img/home/optus.jpg" alt="Optus" />
+          </div>
+          <div class="partner-logo">
+            <img src="../img/home/ss.jpg" alt="Service Stream" />
+          </div>
+          <div class="partner-logo">
+            <img src="../img/home/tpg.jpg" alt="TPG" />
           </div>
         </div>
       </section>
 
-      <!-- ===== SAFETY ===== -->
-      <!-- <section id="safety" class="safety-governance-section">
-        <div class="split-layout-grid">
-          <div class="sticky-meta-column">
-            <span class="section-badge">Safety</span>
-            <h2 class="block-title">
-              A safe, healthy working environment - always.
-            </h2>
-            <p class="column-caption-text">
-              Maintaining safe environments free from risks to health, to the
-              extent reasonably practicable.
-            </p>
-          </div>
-          <div class="narrative-content-column">
-            <p class="paragraph-lead">
-              Every project undergoes rigorous risk assessment to implement
-              effective solutions and mitigate hazards across all operational
-              environments.
-            </p>
-            <p class="paragraph-standard">
-              At Unitech Networks, we are committed to using safe plant and
-              ensuring all electrical equipment is thoroughly tested and tagged.
-              We have implemented comprehensive health and safety plans,
-              enforced stringent policies, evaluated our practices, and adhered
-              to all relevant legal guidelines.
-            </p>
-            <div class="environmental-assurance-panel">
-              <div class="panel-icon"><i data-lucide="globe-2"></i></div>
-              <div class="panel-body">
-                <h4>Environmental Commitment</h4>
-                <p>
-                  Our commitment extends to protecting natural resources,
-                  preventing pollution, complying with environmental safety
-                  regulations, and minimising environmental impact across all
-                  field operations.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> -->
+      <!-- ===== CTA BAND ===== -->
+      <section class="cta-band">
+        <h2>Ready to start your project?</h2>
+        <p>
+          Tell us what you need and our team will get back to you promptly with
+          the next steps.
+        </p>
+        <a href="#contact" class="btn-primary-tech btn-light"
+          >Contact Us</a
+        >
+        <p class="cta-checks">
+          Free consultation &nbsp;|&nbsp; Clear quote &nbsp;|&nbsp; Licensed
+          technicians
+        </p>
+      </section>
 
       <!-- ===== CONTACT ===== -->
       <section id="contact" class="communication-terminal-section">
@@ -361,10 +481,9 @@
             <span class="section-badge">Get In Touch</span>
             <h2 class="block-title">We're here and ready to help.</h2>
             <p class="terminal-explanatory-text">
-              Reach out through whichever channel suits you best - we'll respond
-              promptly.
+              Reach out through whichever channel suits you best and we'll
+              respond promptly.
             </p>
-
             <div class="meta-contact-channels">
               <div class="channel-card">
                 <div class="channel-icon"><i data-lucide="mail"></i></div>
@@ -375,40 +494,17 @@
                   >
                 </div>
               </div>
-              <!-- <div class="channel-card">
+              <!-- Add phone / address cards here when the client approves them:
+              <div class="channel-card">
                 <div class="channel-icon"><i data-lucide="phone"></i></div>
-                <div class="channel-details">
-                  <h4>Phone</h4>
-                  <a href="tel:+61415661770">+61 415 661 770</a>
-                </div>
-              </div> -->
-
-              <!-- <div class="channel-card">
-                <div class="channel-icon"><i data-lucide="map-pin"></i></div>
-                <div class="channel-details">
-                  <h4>Address</h4>
-                  <span>22 Wicker Street, Werribee VIC 3030</span>
-                </div>
+                <div class="channel-details"><h4>Phone</h4><a href="tel:+61415661770">+61 415 661 770</a></div>
               </div> -->
             </div>
-            <!-- 
-            <div class="google-map-embed-wrapper">
-              <iframe
-                src="https://maps.google.com/maps?q=22%20Wicker%20Street%2C%20Werribee%20VIC%203030&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="300"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              >
-              </iframe>
-            </div> -->
           </div>
 
           <div class="terminal-form-side">
             <div class="form-card-container">
-              <h3>Send Us a Message</h3>
+              <h3>Send us a message</h3>
               <p class="form-desc-text">
                 Tell us about your project and our team will get back to you
                 promptly.
@@ -445,7 +541,6 @@
                     />
                   </div>
                 </div>
-
                 <div class="form-input-wrapper">
                   <label for="email"
                     >Email Address <span class="required-star">*</span></label
@@ -458,17 +553,15 @@
                     placeholder="you@example.com.au"
                   />
                 </div>
-
                 <div class="form-input-wrapper">
                   <label for="subject">Subject</label>
                   <input
                     type="text"
                     id="subject"
                     name="Subject"
-                    placeholder="e.g. Tender Inquiry, Infrastructure Consultation"
+                    placeholder="e.g. Tender enquiry, CCTV quote"
                   />
                 </div>
-
                 <div class="form-input-wrapper">
                   <label for="message"
                     >Message <span class="required-star">*</span></label
@@ -480,38 +573,32 @@
                     placeholder="Tell us about your project requirements..."
                   ></textarea>
                 </div>
-
                 <button type="submit" class="btn-submit-form" id="btn-submit">
-                  <span>Send Message</span>
-                  <i data-lucide="send"></i>
+                  <span>Send Message</span><i data-lucide="send"></i>
                 </button>
               </form>
 
-              <!-- Success Message (Existing) -->
               <div
                 id="formSuccessAlert"
                 class="success-alert-container"
                 style="display: none"
               >
                 <i data-lucide="check-circle"></i>
-                <h3>Message Sent!</h3>
+                <h3>Message sent</h3>
                 <p>
-                  Thanks for reaching out. Our team will be in touch with you
-                  shortly.
+                  Thanks for reaching out. Our team will be in touch shortly.
                 </p>
               </div>
-
-              <!-- Error Message (New) -->
               <div
                 id="formErrorAlert"
                 class="error-alert-container"
                 style="display: none"
               >
                 <i data-lucide="alert-circle"></i>
-                <h3>Submission Failed</h3>
+                <h3>Message not sent</h3>
                 <p id="error-message-text">
-                  There was an issue sending your message. Please try again
-                  later.
+                  Something went wrong sending your message. Please try again,
+                  or email us directly.
                 </p>
               </div>
             </div>
