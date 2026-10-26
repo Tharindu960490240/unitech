@@ -703,7 +703,7 @@ section {
   letter-spacing: 0.1em;
   color: var(--tech-blue-dark);
   background: var(--bg-tint);
-  padding: 0.3rem 0.75rem;
+  padding: 0.8rem 0.75rem;
   border-radius: 100px;
   line-height: 1;
 }
