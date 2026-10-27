@@ -8,6 +8,7 @@ const SITE = {
   phoneHref: "tel:+61451071769",
   location: "Werribee, Victoria",
   email: "admin@unitechnetworks.com.au",
+  mapUrl: "https://www.google.com/maps/search/?api=1&query=Werribee+VIC+3030",
   // Google Tag Manager container ID, e.g. "GTM-ABC1234". Leave empty until created.
   // GA4 and Google Ads conversion tags are then configured inside GTM.
   gtmId: "",
@@ -125,7 +126,7 @@ const footerHTML = `
         </li>
         <li>
           <i data-lucide="map-pin"></i>
-          <span>${SITE.location}</span>
+          <a href="${SITE.mapUrl}" target="_blank" rel="noopener">${SITE.location}</a>
         </li>
         <li>
           <i data-lucide="mail"></i>
