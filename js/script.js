@@ -299,10 +299,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const button = document.getElementById(buttonId);
     const label = button?.querySelector("span");
     const labelText = label?.textContent;
+    const MESSAGE_MS = 5000; // how long the success / error message stays up
+    let hideTimer;
+    const hideMessages = () => {
+      clearTimeout(hideTimer);
+      if (success) success.style.display = "none";
+      if (error) error.style.display = "none";
+      form.style.display = "";
+    };
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      if (error) error.style.display = "none";
+      hideMessages();
 
       // Optional photo: keep under Formspree's size limit
       const file = form.querySelector('input[type="file"]')?.files?.[0];
@@ -318,12 +326,33 @@ document.addEventListener("DOMContentLoaded", () => {
       if (label) label.textContent = "Sending...";
 
       try {
+        // Build the payload. Drop the photo field when no file is chosen:
+        // Formspree's free plan rejects any submission that contains a file field.
+        const payload = new FormData(form);
+        for (const [key, value] of [...payload.entries()]) {
+          if (value instanceof File && !value.name) payload.delete(key);
+        }
+
         const response = await fetch(form.action, {
           method: "POST",
-          body: new FormData(form),
+          body: payload,
           headers: { Accept: "application/json" },
         });
-        if (!response.ok) throw new Error("Request failed");
+        if (!response.ok) {
+          // Formspree explains why it refused; log it so it shows in DevTools
+          let reason = "HTTP " + response.status;
+          try {
+            const data = await response.json();
+            if (data.errors)
+              reason = data.errors.map((x) => x.message).join("; ");
+            else if (data.error) reason = data.error;
+          } catch (_) {}
+          console.error(
+            "[Unitech form] Formspree rejected the submission:",
+            reason,
+          );
+          throw new Error(reason);
+        }
 
         // Success is shown ONLY after the server confirms the submission
         const fd = new FormData(form);
@@ -338,9 +367,14 @@ document.addEventListener("DOMContentLoaded", () => {
           success.style.display = "block";
           success.scrollIntoView({ behavior: "smooth", block: "center" });
         }
+        // After a few seconds, hide the message and bring back an empty form
+        hideTimer = setTimeout(hideMessages, MESSAGE_MS);
       } catch (err) {
         // Keep the form (and what they typed) so they can retry
+        console.error("[Unitech form] Not sent:", err.message);
         if (error) error.style.display = "block";
+        // Hide the error after a few seconds; the form and its contents stay
+        hideTimer = setTimeout(hideMessages, MESSAGE_MS);
         track("form_error", { form_id: form.dataset.leadForm || formId });
       } finally {
         if (button) button.disabled = false;
