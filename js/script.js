@@ -66,10 +66,6 @@ const headerHTML = `
       <img src="../img/logo/logo.png" alt="Unitech Networks" class="main-logo-img" width="180" height="42" />
     </a>
 
-    <a href="${SITE.phoneHref}" class="header-phone-mobile" aria-label="Call Unitech Networks">
-      <i data-lucide="phone"></i>
-    </a>
-
     <button class="menu-toggle-btn" aria-label="Toggle Navigation" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
