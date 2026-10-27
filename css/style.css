@@ -1359,12 +1359,20 @@ section {
   margin-top: 3px;
   color: #7dd3fc;
 }
+.footer-col span {
+  color: #e0f2fe;
+  text-decoration: none;
+  transition: 0.25s;
+  overflow-wrap: anywhere;
+}
+
 .footer-col a {
   color: #e0f2fe;
   text-decoration: none;
   transition: 0.25s;
   overflow-wrap: anywhere;
 }
+
 .footer-col a:hover {
   color: #fff;
   text-decoration: underline;
@@ -2315,4 +2323,224 @@ section {
 }
 .solar-promo .btn-primary-tech:hover {
   background: var(--bg-tint);
+}
+
+/* ==========================================================================
+   17. HOMEPAGE HEADLINE + COMPACT QUOTE TAB
+   ========================================================================== */
+.hero-headline .hl-line {
+  display: block;
+}
+.quote-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0.9rem 0.55rem 0.6rem;
+  background: #fff;
+  border: 1px solid var(--stroke-clean);
+  border-radius: 999px;
+  box-shadow: var(--shadow-md);
+  color: var(--bg-deep);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+.quote-tab:hover {
+  border-color: var(--tech-blue);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-1px);
+}
+.quote-tab-icons {
+  display: inline-flex;
+  gap: 0.3rem;
+}
+.quote-tab-icons svg {
+  width: 30px;
+  height: 30px;
+  padding: 6px;
+  border-radius: 50%;
+  background: var(--bg-tint);
+  color: var(--tech-blue-dark);
+}
+.quote-tab-arrow {
+  width: 18px;
+  height: 18px;
+  color: var(--tech-blue);
+  transition: transform 0.2s ease;
+}
+.quote-tab:hover .quote-tab-arrow {
+  transform: translateX(3px);
+}
+
+/* ==========================================================================
+   18. QUOTE PICKERS (top bar + homepage tab): CCTV or Solar
+   ========================================================================== */
+.quote-picker {
+  position: relative;
+  display: inline-block;
+}
+button.quote-tab {
+  font-family: var(--font);
+  cursor: pointer;
+}
+.quote-tab[aria-expanded="true"] .quote-tab-arrow {
+  transform: rotate(90deg);
+}
+.quote-options {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  z-index: 1001;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.45rem;
+  background: #fff;
+  border: 1px solid var(--stroke-clean);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+.quote-options[hidden] {
+  display: none;
+}
+.quote-options a {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: 10px;
+  color: var(--bg-deep);
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.quote-options a::after {
+  display: none !important;
+}
+.quote-options a:hover {
+  background: var(--bg-muted);
+  color: var(--tech-blue-dark);
+}
+.quote-options svg {
+  width: 18px;
+  height: 18px;
+  color: var(--tech-blue-dark);
+}
+
+/* Top bar button */
+.menu-links button.nav-action-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  font-weight: 700;
+  background: var(--tech-blue);
+  color: #fff;
+  padding: 0.7rem 1.3rem;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35);
+  transition: all 0.22s ease;
+}
+.menu-links button.nav-action-cta:hover {
+  background: var(--tech-blue-hover);
+}
+.menu-links button.nav-action-cta svg {
+  width: 15px;
+  height: 15px;
+  transition: transform 0.2s ease;
+}
+.menu-links button.nav-action-cta[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+.nav-quote .quote-options {
+  left: auto;
+  right: 0;
+}
+
+/* Mobile menu: show both quote options as full-width buttons, no toggle */
+@media (max-width: 768px) {
+  .nav-quote {
+    display: block;
+  }
+  .nav-quote > button.nav-action-cta {
+    display: none;
+  }
+  .nav-quote .quote-options,
+  .nav-quote .quote-options[hidden] {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    min-width: 0;
+  }
+  .nav-quote .quote-options a {
+    justify-content: center;
+    padding: 0.9rem 0.5rem;
+    background: var(--tech-blue);
+    color: #fff;
+    border-radius: 999px;
+    font-size: 0.95rem;
+  }
+  .nav-quote .quote-options a svg {
+    color: #fff;
+  }
+}
+@media (max-width: 560px) {
+  .quote-picker:not(.nav-quote) .quote-options {
+    min-width: 0;
+    right: 0;
+  }
+}
+
+/* Homepage hero picker: the hero hides overflow, so the two choices open
+   inline under the tab (as a row of pills) instead of floating over the edge */
+.hero-left-col .quote-options {
+  position: static;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+  padding: 0;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+.hero-left-col .quote-options a {
+  background: #fff;
+  border: 1.5px solid var(--stroke-clean);
+  border-radius: 999px;
+  padding: 0.6rem 1.1rem;
+  box-shadow: var(--shadow-sm);
+}
+.hero-left-col .quote-options a:hover {
+  border-color: var(--tech-blue);
+  background: #fff;
+}
+.hero-left-col .quote-picker {
+  display: block;
+}
+.hero-left-col .quote-tab {
+  width: auto;
+}
+/* Map under the contact cards */
+.terminal-info-side .google-map-embed-wrapper {
+  box-shadow: var(--shadow-sm);
+  background: #fff;
+}
+.terminal-info-side .google-map-embed-wrapper iframe {
+  height: 300px;
 }

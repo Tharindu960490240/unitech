@@ -4,8 +4,9 @@
 
 // ---- 0. SITE SETTINGS: edit these in one place -----------------------------
 const SITE = {
-  phoneDisplay: "0415 661 770", // confirm with client before launch
-  phoneHref: "tel:+61415661770",
+  phoneDisplay: "0451 071 769",
+  phoneHref: "tel:+61451071769",
+  location: "Werribee, Victoria",
   email: "admin@unitechnetworks.com.au",
   // Google Tag Manager container ID, e.g. "GTM-ABC1234". Leave empty until created.
   // GA4 and Google Ads conversion tags are then configured inside GTM.
@@ -83,7 +84,15 @@ const headerHTML = `
             <li><a href="solar.html"><i data-lucide="sun"></i> Solar & Battery Solutions</a></li>
           </ul>
         </li>
-        <li><a href="security.html#quote-request" class="nav-action-cta" data-cta="nav_quote">Get a Quote For CCTV</a></li>
+        <li class="nav-quote quote-picker" data-quote-picker>
+          <button type="button" class="nav-action-cta" aria-expanded="false" aria-controls="navQuoteMenu" data-cta="nav_quote">
+            Get a Free Quote <i data-lucide="chevron-down"></i>
+          </button>
+          <div class="quote-options" id="navQuoteMenu" hidden>
+            <a href="security.html#quote-request" data-cta="nav_quote_cctv"><i data-lucide="cctv"></i> CCTV Quote</a>
+            <a href="solar.html#quote-request" data-cta="nav_quote_solar"><i data-lucide="sun"></i> Solar Quote</a>
+          </div>
+        </li>
       </ul>
     </nav>
   </div>
@@ -110,6 +119,14 @@ const footerHTML = `
     <div class="footer-col">
       <h4>Contact Us</h4>
       <ul class="contact-details">
+        <li>
+          <i data-lucide="phone"></i>
+          <a href="${SITE.phoneHref}">${SITE.phoneDisplay}</a>
+        </li>
+        <li>
+          <i data-lucide="map-pin"></i>
+          <span>${SITE.location}</span>
+        </li>
         <li>
           <i data-lucide="mail"></i>
           <a href="mailto:${SITE.email}">${SITE.email}</a>
@@ -211,6 +228,42 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // 8b. Quote pickers (top bar + homepage tab): open a CCTV / Solar choice
+  const pickers = document.querySelectorAll("[data-quote-picker]");
+  const closeAll = (except) =>
+    pickers.forEach((p) => {
+      if (p === except) return;
+      p.querySelector("button")?.setAttribute("aria-expanded", "false");
+      const m = p.querySelector(".quote-options");
+      if (m) m.hidden = true;
+    });
+  pickers.forEach((p) => {
+    const btn = p.querySelector("button");
+    const menu = p.querySelector(".quote-options");
+    if (!btn || !menu) return;
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const open = btn.getAttribute("aria-expanded") === "true";
+      closeAll(p);
+      btn.setAttribute("aria-expanded", String(!open));
+      menu.hidden = open;
+      if (!open)
+        track("quote_cta_click", { cta: btn.dataset.cta || "quote_picker" });
+    });
+    menu.querySelectorAll("a").forEach((a) =>
+      a.addEventListener("click", () => {
+        closeAll();
+        if (navigationGate?.classList.contains("open")) toggleMenu();
+      }),
+    );
+  });
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest("[data-quote-picker]")) closeAll();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeAll();
+  });
 
   // 9. Click tracking: phone, email, quote buttons
   document.addEventListener("click", (e) => {
