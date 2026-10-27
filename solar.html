@@ -1,14 +1,29 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-AU">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Solar &amp; Battery Solutions | Unitech Networks</title>
+    <title>Solar &amp; Battery Solutions Melbourne | Unitech Networks</title>
     <meta
       name="description"
-      content="Residential and commercial solar, battery storage and EV chargers in Victoria. Unitech coordinates your project and installation is completed by licensed, accredited partner installers."
+      content="Residential and commercial solar, battery storage and EV chargers in Melbourne. Unitech coordinates your project and installation is completed by licensed, accredited partners. Request a free quote."
     />
     <link rel="canonical" href="https://unitechnetworks.com.au/solar/" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Solar &amp; Battery Solutions Melbourne | Unitech Networks"
+    />
+    <meta
+      property="og:description"
+      content="Solar panels, battery storage and EV chargers for Melbourne homes and businesses. Get a free quote from Unitech Networks."
+    />
+    <meta property="og:url" content="https://unitechnetworks.com.au/solar/" />
+    <meta
+      property="og:image"
+      content="https://unitechnetworks.com.au/img/solar/solar_hero.jpg"
+    />
+
     <link rel="icon" href="../favicon.ico" />
     <link rel="stylesheet" href="../css/style.css" />
     <link
@@ -21,37 +36,293 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <link rel="preload" as="image" href="../img/solar/solar_hero.jpg" />
     <script src="https://unpkg.com/lucide@0.469.0"></script>
+
+    <!-- Service structured data. Confirm every value with Unitech before launch. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Solar and Battery Solutions",
+        "serviceType": "Solar panel, battery storage and EV charger installation (via accredited partners)",
+        "url": "https://unitechnetworks.com.au/solar/",
+        "image": "https://unitechnetworks.com.au/img/solar/solar_hero.jpg",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://unitechnetworks.com.au/#business",
+          "name": "Unitech Networks",
+          "url": "https://unitechnetworks.com.au/",
+          "email": "admin@unitechnetworks.com.au",
+          "telephone": "+61415661770"
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Melbourne" },
+          { "@type": "Place", "name": "Werribee" },
+          { "@type": "Place", "name": "Point Cook" },
+          { "@type": "Place", "name": "Tarneit" },
+          { "@type": "Place", "name": "Truganina" }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Solar and energy services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Residential Solar Systems"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Commercial Solar Systems"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": { "@type": "Service", "name": "Battery Storage" }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "EV Charger Installation"
+              }
+            }
+          ]
+        }
+      }
+    </script>
   </head>
-  <body>
+  <body class="has-mobile-cta">
     <div id="header-placeholder"></div>
 
-    <main class="service-detail-page">
-      <section class="service-hero">
+    <main class="service-detail-page cctv-page solar-page">
+      <!-- ===== HERO ===== -->
+      <section class="service-hero cctv-hero">
         <div class="service-hero-content">
-          <span class="section-badge">Energy Solutions</span>
-          <h1>Solar & Battery</h1>
+          <span class="section-badge">Solar &amp; Battery Melbourne</span>
+          <h1>Solar &amp; Battery Solutions in Melbourne</h1>
           <p>
-            We help homeowners and businesses plan solar, battery and EV
-            charging projects and connect them with trusted, accredited
-            installation partners.
+            Solar panels, battery storage and EV chargers for homes and
+            businesses across Melbourne. We plan your system with you and
+            coordinate the whole project, with installation by licensed,
+            accredited partners.
           </p>
-          <div class="hero-actions-row" style="margin-top: 1.75rem">
-            <a href="#quote-request" class="btn-primary-tech" data-cta="solar_hero_quote"
-              ><span>Get a Quote</span><i data-lucide="arrow-right"></i
-            ></a>
+
+          <ul class="trust-pills" aria-label="Why customers choose us">
+            <li><i data-lucide="user-check"></i> One point of contact</li>
+            <li>
+              <i data-lucide="badge-check"></i> Accredited partner installers
+            </li>
+            <li>
+              <i data-lucide="map-pin"></i> Melbourne &amp; western suburbs
+            </li>
+          </ul>
+
+          <div class="hero-actions-row">
+            <a
+              href="#quote-request"
+              class="btn-primary-tech"
+              data-cta="solar_hero_quote"
+            >
+              <span>Get a Free Quote</span>
+              <i data-lucide="arrow-right"></i>
+            </a>
           </div>
+          <p class="hero-note">
+            Free quote · No obligation · Residential and commercial
+          </p>
         </div>
         <div class="service-hero-image">
           <img
             src="../img/solar/solar_hero.jpg"
-            alt="Solar and Battery Services"
+            alt="Solar panels installed on a Melbourne roof"
+            width="1200"
+            height="800"
+            fetchpriority="high"
           />
         </div>
       </section>
 
-      <!-- Partner Note -->
-      <div class="partner-note partner-note-top">
+      <!-- ===== SERVICES ===== -->
+      <section class="cctv-section" id="services">
+        <div class="matrix-header-wrap text-center">
+          <span class="section-badge">Our Solar Services</span>
+          <h2 class="block-title">Solar and battery for every property</h2>
+          <p class="section-intro">
+            Whether you want to cut your household power bill or reduce running
+            costs across a business site, we help you choose the right system
+            and look after the project from quote to handover.
+          </p>
+        </div>
+
+        <div class="services-grid cctv-services-grid">
+          <article class="service-box">
+            <div class="service-img">
+              <img
+                src="../img/solar/residential.jpg"
+                alt="Residential solar panels on a family home"
+                loading="lazy"
+                width="600"
+                height="400"
+              />
+            </div>
+            <div class="service-body">
+              <div class="box-header">
+                <span class="index">Home</span>
+                <div class="icon-wrap"><i data-lucide="home"></i></div>
+              </div>
+              <h3>Residential Solar Systems</h3>
+              <p>
+                Rooftop solar sized to your household's usage and roof space,
+                designed to lower your electricity bills and make the most of
+                daytime generation.
+              </p>
+            </div>
+          </article>
+
+          <article class="service-box">
+            <div class="service-img">
+              <img
+                src="../img/solar/commercial.jpg"
+                alt="Commercial solar array on a business building"
+                loading="lazy"
+                width="600"
+                height="400"
+              />
+            </div>
+            <div class="service-body">
+              <div class="box-header">
+                <span class="index">Commercial</span>
+                <div class="icon-wrap"><i data-lucide="building-2"></i></div>
+              </div>
+              <h3>Commercial Solar Systems</h3>
+              <p>
+                Larger systems for offices, warehouses, retail and industrial
+                sites, helping reduce operating costs and your business's carbon
+                footprint.
+              </p>
+            </div>
+          </article>
+
+          <article class="service-box">
+            <div class="service-img">
+              <img
+                src="../img/solar/battery.jpg"
+                alt="Home battery storage unit mounted on a wall"
+                loading="lazy"
+                width="600"
+                height="400"
+              />
+            </div>
+            <div class="service-body">
+              <div class="box-header">
+                <span class="index">Battery</span>
+                <div class="icon-wrap">
+                  <i data-lucide="battery-charging"></i>
+                </div>
+              </div>
+              <h3>Battery Storage</h3>
+              <p>
+                Store the extra power your panels make during the day and use it
+                at night, with backup options available for grid outages.
+              </p>
+            </div>
+          </article>
+
+          <article class="service-box">
+            <div class="service-img">
+              <img
+                src="../img/solar/ev.jpg"
+                alt="EV charger installed in a garage"
+                loading="lazy"
+                width="600"
+                height="400"
+              />
+            </div>
+            <div class="service-body">
+              <div class="box-header">
+                <span class="index">EV</span>
+                <div class="icon-wrap"><i data-lucide="plug-zap"></i></div>
+              </div>
+              <h3>EV Charger Installation</h3>
+              <p>
+                Home and workplace EV chargers, which can be set up to charge
+                from your solar for cheaper, cleaner driving.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===== MORE ENERGY SERVICES ===== -->
+      <section class="cctv-section cctv-other" id="other-energy">
+        <div class="matrix-header-wrap text-center">
+          <span class="section-badge">More Energy Services</span>
+          <h2 class="block-title">Upgrades and energy advice</h2>
+          <p class="section-intro">
+            Already have solar? We can help you get more out of it, or work out
+            whether solar is right for you before you commit.
+          </p>
+        </div>
+
+        <div class="services-grid other-services-grid two-col-grid">
+          <article class="service-box">
+            <div class="service-img">
+              <img
+                src="../img/solar/upgrade.jpg"
+                alt="Solar inverter being upgraded"
+                loading="lazy"
+                width="600"
+                height="400"
+              />
+            </div>
+            <div class="service-body">
+              <div class="box-header">
+                <span class="index">Upgrades</span>
+                <div class="icon-wrap">
+                  <i data-lucide="arrow-up-circle"></i>
+                </div>
+              </div>
+              <h3>Solar System Upgrades</h3>
+              <p>
+                Add panels, replace an old or faulty inverter, or add a battery
+                to your existing system to improve performance.
+              </p>
+            </div>
+          </article>
+
+          <article class="service-box">
+            <div class="service-img">
+              <img
+                src="../img/solar/advice.jpg"
+                alt="Reviewing household energy usage"
+                loading="lazy"
+                width="600"
+                height="400"
+              />
+            </div>
+            <div class="service-body">
+              <div class="box-header">
+                <span class="index">Advice</span>
+                <div class="icon-wrap"><i data-lucide="lightbulb"></i></div>
+              </div>
+              <h3>Energy Efficiency Advice</h3>
+              <p>
+                Practical guidance on system size, battery value and reducing
+                energy use, based on your bills and how you use power.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===== PARTNER NOTE ===== -->
+      <div class="partner-note">
         <i data-lucide="shield-check"></i>
         <p>
           <strong>How our solar service works:</strong> Unitech is your point of
@@ -62,289 +333,525 @@
         </p>
       </div>
 
-      <section class="services-grid">
-        <article class="service-box">
-          <div class="service-img">
-            <img loading="lazy"               src="../img/solar/residential.jpg"
-              alt="Residential Solar Systems"
+      <!-- ===== WHY UNITECH ===== -->
+      <section class="why-us cctv-why">
+        <div class="why-grid">
+          <div class="why-image">
+            <img
+              src="../img/solar/residential.jpg"
+              alt="Completed residential solar installation"
+              loading="lazy"
+              width="800"
+              height="600"
             />
           </div>
-          <div class="service-body">
-            <div class="box-header">
-              <span class="index">01</span>
-              <div class="icon-wrap"><i data-lucide="sun"></i></div>
-            </div>
-            <h3>Residential Solar Systems</h3>
-            <p>
-              Tailored solar panel installations for homeowners, designed to
-              maximise energy generation and significantly reduce household
-              electricity bills.
-            </p>
-          </div>
-        </article>
-
-        <article class="service-box">
-          <div class="service-img">
-            <img loading="lazy"               src="../img/solar/commercial.jpg"
-              alt="Commercial Solar Systems"
-            />
-          </div>
-          <div class="service-body">
-            <div class="box-header">
-              <span class="index">02</span>
-              <div class="icon-wrap"><i data-lucide="building-2"></i></div>
-            </div>
-            <h3>Commercial Solar Systems</h3>
-            <p>
-              Large-scale solar solutions for businesses and industrial sites,
-              delivering measurable reductions in operating costs and carbon
-              footprint.
-            </p>
-          </div>
-        </article>
-
-        <article class="service-box">
-          <div class="service-img">
-            <img loading="lazy"               src="../img/solar/battery.jpg"
-              alt="Battery Storage Solutions"
-            />
-          </div>
-          <div class="service-body">
-            <div class="box-header">
-              <span class="index">03</span>
-              <div class="icon-wrap">
-                <i data-lucide="battery-charging"></i>
+          <div>
+            <span class="section-badge">Why Unitech</span>
+            <h2 class="block-title">
+              A simpler way to get solar done properly
+            </h2>
+            <div class="why-points">
+              <div class="why-point">
+                <i data-lucide="user-check"></i>
+                <div>
+                  <h4>One point of contact</h4>
+                  <p>
+                    You deal with Unitech from the first call to handover, so
+                    you are never chasing different companies for answers.
+                  </p>
+                </div>
+              </div>
+              <div class="why-point">
+                <i data-lucide="badge-check"></i>
+                <div>
+                  <h4>Licensed, accredited installers</h4>
+                  <!-- TODO before launch: name the partner installer(s) and their
+                       accreditation if Unitech is happy to publish it. -->
+                  <p>
+                    Every installation is completed by licensed electricians
+                    with the accreditation solar and battery work requires.
+                  </p>
+                </div>
+              </div>
+              <div class="why-point">
+                <i data-lucide="calendar-check"></i>
+                <div>
+                  <h4>Operating in Victoria since 2021</h4>
+                  <p>
+                    An established local business working across
+                    telecommunications, security and energy.
+                  </p>
+                </div>
+              </div>
+              <div class="why-point">
+                <i data-lucide="file-text"></i>
+                <div>
+                  <h4>Clear, honest quotes</h4>
+                  <p>
+                    A written quote listing panels, inverter, battery and
+                    installation, so you know exactly what you are paying for.
+                  </p>
+                </div>
               </div>
             </div>
-            <h3>Battery Storage Solutions</h3>
-            <p>
-              Store excess solar energy with advanced battery systems, ensuring
-              reliable power availability after dark and during grid outages.
-            </p>
+            <a
+              href="#quote-request"
+              class="btn-primary-tech"
+              data-cta="solar_why_quote"
+              ><span>Get a Free Quote</span><i data-lucide="arrow-right"></i
+            ></a>
           </div>
-        </article>
-
-        <article class="service-box">
-          <div class="service-img">
-            <img loading="lazy" src="../img/solar/ev.jpg" alt="EV Charger Installation" />
-          </div>
-          <div class="service-body">
-            <div class="box-header">
-              <span class="index">04</span>
-              <div class="icon-wrap"><i data-lucide="plug-zap"></i></div>
-            </div>
-            <h3>EV Charger Installation</h3>
-            <p>
-              Home and commercial EV charging station installations, integrated
-              with your solar system for clean, cost-effective vehicle charging.
-            </p>
-          </div>
-        </article>
-
-        <article class="service-box">
-          <div class="service-img">
-            <img loading="lazy" src="../img/solar/upgrade.jpg" alt="Solar System Upgrades" />
-          </div>
-          <div class="service-body">
-            <div class="box-header">
-              <span class="index">05</span>
-              <div class="icon-wrap"><i data-lucide="arrow-up-circle"></i></div>
-            </div>
-            <h3>Solar System Upgrades</h3>
-            <p>
-              Expand or modernise your existing solar setup with additional
-              panels, inverter replacements, or battery integration to improve
-              overall system performance.
-            </p>
-          </div>
-        </article>
-
-        <article class="service-box">
-          <div class="service-img">
-            <img loading="lazy" src="../img/solar/advice.jpg" alt="Energy Efficiency Advice" />
-          </div>
-          <div class="service-body">
-            <div class="box-header">
-              <span class="index">06</span>
-              <div class="icon-wrap"><i data-lucide="lightbulb"></i></div>
-            </div>
-            <h3>Energy Efficiency Advice</h3>
-            <p>
-              Expert guidance on reducing energy consumption across your home or
-              business, helping you get the most out of your solar investment.
-            </p>
-          </div>
-        </article>
+        </div>
       </section>
 
+      <!-- ===== PROJECTS (Priority 2) =====
+           Uncomment and fill when Unitech supplies real installation photos and
+           customer permission. Do not publish stock photos as projects.
 
-      <!-- Quotation Request Form Section -->
+      <section class="cctv-section" id="projects">
+        <div class="matrix-header-wrap text-center">
+          <span class="section-badge">Recent Projects</span>
+          <h2 class="block-title">Solar installations around Melbourne</h2>
+        </div>
+        <div class="services-grid">
+          <article class="service-box">
+            <div class="service-img"><img src="../img/solar/projects/project-1.jpg" alt="DESCRIBE THE INSTALL" loading="lazy" /></div>
+            <div class="service-body">
+              <div class="box-header"><span class="index">SUBURB</span></div>
+              <h3>6.6 kW system with battery, family home</h3>
+              <p>Short description of the job, equipment used and result.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+      -->
+
+      <!-- ===== HOW IT WORKS ===== -->
+      <section class="process cctv-process" id="how-it-works">
+        <div class="matrix-header-wrap text-center">
+          <span class="section-badge">How It Works</span>
+          <h2 class="block-title">From enquiry to switched on</h2>
+        </div>
+        <ol class="steps-row">
+          <li class="step-card">
+            <span class="step-no">1</span>
+            <h3>Enquiry</h3>
+            <p>
+              Send the form with your property type and what you would like to
+              achieve.
+            </p>
+          </li>
+          <li class="step-card">
+            <span class="step-no">2</span>
+            <h3>Assessment</h3>
+            <p>We review your bills, roof space, switchboard and goals.</p>
+          </li>
+          <li class="step-card">
+            <span class="step-no">3</span>
+            <h3>Quote</h3>
+            <p>
+              A clear written quote for panels, inverter, battery and
+              installation.
+            </p>
+          </li>
+          <li class="step-card">
+            <span class="step-no">4</span>
+            <h3>Installation</h3>
+            <p>Completed by our licensed, accredited partner installers.</p>
+          </li>
+          <li class="step-card">
+            <span class="step-no">5</span>
+            <h3>Handover</h3>
+            <p>
+              We confirm everything is working and show you how to monitor your
+              system.
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ===== AREAS SERVED ===== -->
+      <section class="cctv-section cctv-areas" id="areas">
+        <div class="areas-grid">
+          <div>
+            <span class="section-badge">Areas We Service</span>
+            <h2 class="block-title">Solar and battery across Melbourne</h2>
+            <p class="areas-text">
+              We help homes and businesses throughout Melbourne, with a strong
+              focus on the western suburbs. If your suburb is not listed, send
+              an enquiry and we will confirm whether we can help.
+            </p>
+            <a
+              href="#quote-request"
+              class="btn-primary-tech"
+              data-cta="solar_areas_quote"
+              ><span>Check your area</span><i data-lucide="arrow-right"></i
+            ></a>
+          </div>
+          <!-- Confirm this list with Unitech: only include suburbs they genuinely service. -->
+          <ul class="area-chips" aria-label="Suburbs serviced">
+            <li>Werribee</li>
+            <li>Point Cook</li>
+            <li>Tarneit</li>
+            <li>Truganina</li>
+            <li>Hoppers Crossing</li>
+            <li>Williams Landing</li>
+            <li>Wyndham Vale</li>
+            <li>Manor Lakes</li>
+            <li>Laverton</li>
+            <li>Altona</li>
+            <li>Sunshine</li>
+            <li>Footscray</li>
+            <li>Caroline Springs</li>
+            <li>Melton</li>
+            <li class="chip-wide">Greater Melbourne</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===== FAQ ===== -->
+      <section class="cctv-section cctv-faq" id="faq">
+        <div class="matrix-header-wrap text-center">
+          <span class="section-badge">FAQs</span>
+          <h2 class="block-title">Solar and battery questions</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>How much does solar cost in Melbourne?</summary>
+            <p>
+              The price depends on the system size, panel and inverter brands,
+              whether you add a battery, and your roof. After reviewing your
+              bills and property we give you a written quote, so you know the
+              full cost before anything is installed.
+            </p>
+          </details>
+          <details>
+            <summary>What size solar system do I need?</summary>
+            <p>
+              It depends on how much electricity you use, when you use it, and
+              how much roof space you have. We look at your recent power bills
+              to recommend a size that suits your usage rather than simply the
+              biggest system that fits.
+            </p>
+          </details>
+          <details>
+            <summary>Is a battery worth it?</summary>
+            <p>
+              A battery lets you use your daytime solar at night and can provide
+              backup during outages. Whether it pays off depends on your usage,
+              feed-in tariff and system size. We will give you an honest view
+              based on your situation.
+            </p>
+          </details>
+          <details>
+            <summary>Are there government rebates?</summary>
+            <!-- Keep this general: rebate amounts and eligibility change often. -->
+            <p>
+              Federal and Victorian government rebates and incentives may be
+              available for solar panels and batteries. Eligibility and amounts
+              change from time to time, so we will explain what currently
+              applies to you when we prepare your quote.
+            </p>
+          </details>
+          <details>
+            <summary>Who installs the system?</summary>
+            <p>
+              Installation is carried out by our partner installers, who are
+              licensed electricians with the accreditation required for solar
+              and battery work. Unitech stays your point of contact throughout
+              the project.
+            </p>
+          </details>
+          <details>
+            <summary>
+              Can you add a battery or EV charger to my existing solar?
+            </summary>
+            <p>
+              Yes, in most cases. We check your current inverter and switchboard
+              to confirm compatibility and recommend the simplest way to add a
+              battery or charger.
+            </p>
+          </details>
+          <details>
+            <summary>What warranty do I get?</summary>
+            <!-- Confirm the warranty wording with Unitech and the partner installers. -->
+            <p>
+              Panels, inverters and batteries come with manufacturer warranties,
+              and installation workmanship warranty details are included in
+              every quote.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <!-- ===== QUOTE FORM ===== -->
       <section class="communication-terminal-section" id="quote-request">
-        <div
-          class="terminal-grid-layout"
-          style="grid-template-columns: 1fr; max-width: 800px; margin: 0 auto"
-        >
+        <div class="terminal-grid-layout quote-layout">
+          <div class="terminal-info-side">
+            <span class="section-badge">Free Quote</span>
+            <h2 class="block-title">Get your free solar or battery quote</h2>
+            <p class="terminal-explanatory-text">
+              Tell us a little about your property and what you want to achieve,
+              and we will be in touch to discuss your options.
+            </p>
+            <div class="meta-contact-channels">
+              <div class="channel-card">
+                <div class="channel-icon"><i data-lucide="mail"></i></div>
+                <div class="channel-details">
+                  <h4>Email</h4>
+                  <a href="mailto:admin@unitechnetworks.com.au"
+                    >admin@unitechnetworks.com.au</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="terminal-form-side">
             <div class="form-card-container">
-              <div class="text-center" style="margin-bottom: 2rem">
-                <span class="section-badge">Get a Quote</span>
-                <h3>Request a Quotation</h3>
-                <p class="form-desc-text">
-                  Send us a few details and our team will get back to you
-                  promptly with next steps and an estimate.
-                </p>
-              </div>
+              <h3>Request a quote</h3>
+              <p class="form-desc-text">
+                Fields marked <span class="required-star">*</span> are required.
+              </p>
 
+              <!-- Keeps the cctvQuoteForm IDs so the shared handler in script.js wires it up -->
               <form
-                id="quotationForm"
+                id="cctvQuoteForm"
                 action="https://formspree.io/f/xbdbwwbe"
                 method="POST"
+                enctype="multipart/form-data"
                 class="clean-enterprise-form"
                 data-lead-form="solar_quote"
               >
+                <input
+                  type="hidden"
+                  name="_subject"
+                  value="New solar / battery quote request (website)"
+                />
                 <!-- Lead source fields, filled by script.js -->
                 <input type="hidden" name="Lead Page" data-source="page" />
-                <input type="hidden" name="UTM Source" data-source="utm_source" />
-                <input type="hidden" name="UTM Campaign" data-source="utm_campaign" />
+                <input type="hidden" name="Referrer" data-source="referrer" />
+                <input
+                  type="hidden"
+                  name="UTM Source"
+                  data-source="utm_source"
+                />
+                <input
+                  type="hidden"
+                  name="UTM Medium"
+                  data-source="utm_medium"
+                />
+                <input
+                  type="hidden"
+                  name="UTM Campaign"
+                  data-source="utm_campaign"
+                />
+                <input type="hidden" name="UTM Term" data-source="utm_term" />
                 <input type="hidden" name="GCLID" data-source="gclid" />
-                <div class="form-dual-row">
-                  <div class="form-input-wrapper">
-                    <label for="firstName"
-                      >First Name <span class="required-star">*</span></label
-                    >
-                    <input
-                      type="text"
-                      id="firstName"
-                      name="First Name"
-                      required
-                      placeholder="John"
-                    />
-                  </div>
-                  <div class="form-input-wrapper">
-                    <label for="lastName"
-                      >Last Name <span class="required-star">*</span></label
-                    >
-                    <input
-                      type="text"
-                      id="lastName"
-                      name="Last Name"
-                      required
-                      placeholder="Doe"
-                    />
-                  </div>
+                <!-- Spam honeypot (Formspree ignores submissions where this is filled) -->
+                <input
+                  type="text"
+                  name="_gotcha"
+                  class="hp-field"
+                  tabindex="-1"
+                  autocomplete="off"
+                  aria-hidden="true"
+                />
+
+                <div class="form-input-wrapper">
+                  <label for="cqName"
+                    >Name <span class="required-star">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="cqName"
+                    name="Name"
+                    required
+                    autocomplete="name"
+                    placeholder="Your name"
+                  />
                 </div>
 
                 <div class="form-dual-row">
                   <div class="form-input-wrapper">
-                    <label for="quoteEmail"
-                      >Email Address <span class="required-star">*</span></label
-                    >
-                    <input
-                      type="email"
-                      id="quoteEmail"
-                      name="Email"
-                      required
-                      placeholder="you@example.com.au"
-                    />
-                  </div>
-                  <div class="form-input-wrapper">
-                    <label for="quotePhone"
-                      >Phone Number <span class="required-star">*</span></label
+                    <label for="cqPhone"
+                      >Phone <span class="required-star">*</span></label
                     >
                     <input
                       type="tel"
-                      id="quotePhone"
-                      name="Phone Number"
+                      id="cqPhone"
+                      name="Phone"
                       required
-                      placeholder="+61 400 000 000"
+                      autocomplete="tel"
+                      inputmode="tel"
+                      placeholder="04xx xxx xxx"
+                    />
+                  </div>
+                  <div class="form-input-wrapper">
+                    <label for="cqEmail"
+                      >Email <span class="required-star">*</span></label
+                    >
+                    <input
+                      type="email"
+                      id="cqEmail"
+                      name="Email"
+                      required
+                      autocomplete="email"
+                      placeholder="you@example.com.au"
                     />
                   </div>
                 </div>
 
                 <div class="form-dual-row">
                   <div class="form-input-wrapper">
-                    <label for="serviceType"
-                      >Type of Service required?
+                    <label for="cqSuburb"
+                      >Suburb <span class="required-star">*</span></label
+                    >
+                    <input
+                      type="text"
+                      id="cqSuburb"
+                      name="Suburb"
+                      required
+                      autocomplete="address-level2"
+                      placeholder="e.g. Point Cook"
+                    />
+                  </div>
+                  <div class="form-input-wrapper">
+                    <label for="cqService"
+                      >Service required
                       <span class="required-star">*</span></label
                     >
-                    <select id="serviceType" name="Service Type" required>
+                    <select id="cqService" name="Service Required" required>
                       <option value="" disabled selected>
-                        Select required service...
+                        Select a service
                       </option>
-                      <option value="Residential Solar Systems">
-                        Residential Solar Systems
-                      </option>
-                      <option value="Commercial Solar Systems">
-                        Commercial Solar Systems
-                      </option>
-                      <option value="Battery Storage Solutions">
-                        Battery Storage Solutions
-                      </option>
-                      <option value="EV Charger Installation">
-                        EV Charger Installation
-                      </option>
-                      <option value="Solar System Upgrades">
-                        Solar System Upgrades
-                      </option>
-                      <option value="Energy Efficiency Advice">
-                        Energy Efficiency Advice
-                      </option>
+                      <option>New solar system</option>
+                      <option>Solar and battery</option>
+                      <option>Battery only (add to existing solar)</option>
+                      <option>EV charger</option>
+                      <option>Solar upgrade or inverter replacement</option>
+                      <option>Energy efficiency advice</option>
+                      <option>Not sure, need advice</option>
                     </select>
                   </div>
+                </div>
 
-                  <div class="form-input-wrapper">
-                    <label for="bookingDate">Preferred date (optional)</label>
-                    <input type="date" id="bookingDate" name="Preferred Date" />
-                    <small class="field-hint"
-                      >We will contact you to confirm a time that suits.</small
-                    >
+                <fieldset class="form-input-wrapper choice-group">
+                  <legend>
+                    Property type <span class="required-star">*</span>
+                  </legend>
+                  <div class="choice-row">
+                    <label class="choice-pill">
+                      <input
+                        type="radio"
+                        name="Property Type"
+                        value="Residential"
+                        required
+                      />
+                      <span><i data-lucide="home"></i> Residential</span>
+                    </label>
+                    <label class="choice-pill">
+                      <input
+                        type="radio"
+                        name="Property Type"
+                        value="Commercial"
+                      />
+                      <span><i data-lucide="building-2"></i> Commercial</span>
+                    </label>
                   </div>
-                </div>
+                </fieldset>
 
-                <div class="form-input-wrapper">
-                  <label for="quoteMessage">Project details (optional)</label>
-                  <textarea
-                    id="quoteMessage"
-                    name="Message"
-                    placeholder="Tell us about your project requirements..."
-                  ></textarea>
-                </div>
+                <details class="optional-fields">
+                  <summary>Add more details (optional)</summary>
+                  <div class="optional-inner">
+                    <div class="form-dual-row">
+                      <div class="form-input-wrapper">
+                        <label for="cqBill">Average quarterly power bill</label>
+                        <select id="cqBill" name="Quarterly Power Bill">
+                          <option value="">Not sure</option>
+                          <option>Under $300</option>
+                          <option>$300 to $600</option>
+                          <option>$600 to $1,000</option>
+                          <option>Over $1,000</option>
+                        </select>
+                      </div>
+                      <div class="form-input-wrapper">
+                        <label for="cqExisting">Existing solar?</label>
+                        <select id="cqExisting" name="Existing Solar">
+                          <option value="">Select</option>
+                          <option>No solar yet</option>
+                          <option>Yes, solar only</option>
+                          <option>Yes, solar and battery</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-input-wrapper">
+                      <label for="cqDate">Preferred date</label>
+                      <input type="date" id="cqDate" name="Preferred Date" />
+                    </div>
+                    <div class="form-input-wrapper">
+                      <label for="cqDetails">Project details</label>
+                      <textarea
+                        id="cqDetails"
+                        name="Project Details"
+                        placeholder="Roof type, storeys, goals (lower bills, backup power, EV)..."
+                      ></textarea>
+                    </div>
+                    <div class="form-input-wrapper">
+                      <label for="cqPhoto"
+                        >Photo of your power bill or roof (optional)</label
+                      >
+                      <input
+                        type="file"
+                        id="cqPhoto"
+                        name="Photo"
+                        accept="image/*,application/pdf"
+                      />
+                      <small class="field-hint"
+                        >JPG, PNG or PDF, up to 10 MB.</small
+                      >
+                    </div>
+                  </div>
+                </details>
 
                 <button
                   type="submit"
                   class="btn-submit-form"
-                  id="btn-submit-quote"
+                  id="btn-submit-cctv"
                 >
-                  <span>Submit Quotation Request</span>
-                  <i data-lucide="send"></i>
+                  <span>Get My Free Quote</span><i data-lucide="send"></i>
                 </button>
+                <p class="form-privacy">
+                  We only use your details to respond to your enquiry.
+                </p>
               </form>
 
-              <!-- Success Alert -->
               <div
-                id="quoteSuccessAlert"
+                id="cctvSuccessAlert"
                 class="success-alert-container"
                 style="display: none"
+                role="status"
               >
                 <i data-lucide="check-circle"></i>
-                <h3>Quotation Request Sent!</h3>
+                <h3>Quote request received</h3>
                 <p>
-                  Thanks for reaching out. Our team will review your
-                  requirements and be in touch with you shortly.
+                  Thanks, we have your details. Our team will contact you
+                  shortly.
                 </p>
               </div>
-
-              <!-- Error Alert -->
               <div
-                id="quoteErrorAlert"
+                id="cctvErrorAlert"
                 class="error-alert-container"
                 style="display: none"
+                role="alert"
               >
                 <i data-lucide="alert-circle"></i>
-                <h3>Submission Failed</h3>
+                <h3>Your request was not sent</h3>
                 <p>
-                  There was an issue sending your request. Please try again
-                  later.
+                  Please try again, or email
+                  <a href="mailto:admin@unitechnetworks.com.au"
+                    >admin@unitechnetworks.com.au</a
+                  >.
                 </p>
               </div>
             </div>
@@ -354,6 +861,16 @@
     </main>
 
     <div id="footer-placeholder"></div>
+
+    <!-- Mobile sticky call / quote bar -->
+    <div class="mobile-cta-bar" aria-label="Quick contact">
+      <a href="tel:+61415661770" class="mcta-call"
+        ><i data-lucide="phone"></i> Call</a
+      >
+      <a href="#quote-request" class="mcta-quote" data-cta="solar_sticky_quote"
+        ><i data-lucide="file-text"></i> Free Quote</a
+      >
+    </div>
 
     <button
       id="scrollToTopBtn"

@@ -29,11 +29,20 @@ if (SITE.gtmId) {
 (function captureSource() {
   try {
     const params = new URLSearchParams(location.search);
-    const keys = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "gclid"];
+    const keys = [
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_term",
+      "gclid",
+    ];
     const stored = JSON.parse(sessionStorage.getItem("leadSource") || "null");
     const hasNew = keys.some((k) => params.get(k));
     if (!stored || hasNew) {
-      const src = { landing: location.href, referrer: document.referrer || "direct" };
+      const src = {
+        landing: location.href,
+        referrer: document.referrer || "direct",
+      };
       keys.forEach((k) => (src[k] = params.get(k) || ""));
       sessionStorage.setItem("leadSource", JSON.stringify(src));
     }
@@ -72,16 +81,13 @@ const headerHTML = `
         <li class="dropdown">
           <a href="#" class="dropdown-trigger">Services <i data-lucide="chevron-down"></i></a>
           <ul class="dropdown-menu">
-            <li><a href="cctv-installation-melbourne.html"><i data-lucide="cctv"></i> CCTV Installation Melbourne</a></li>
-            <li><a href="security.html"><i data-lucide="shield-check"></i> Security Systems</a></li>
+            <li><a href="security.html"><i data-lucide="cctv"></i> CCTV & Security</a></li>
             <li><a href="telecommunications.html"><i data-lucide="radio"></i> Telecommunications</a></li>
             <li><a href="civils.html"><i data-lucide="hard-hat"></i> Civil Works</a></li>
             <li><a href="solar.html"><i data-lucide="sun"></i> Solar & Battery Solutions</a></li>
           </ul>
         </li>
-        <li><a href="cctv-installation-melbourne.html">CCTV Installation</a></li>
-        <li><a href="${SITE.phoneHref}" class="nav-phone"><i data-lucide="phone"></i> ${SITE.phoneDisplay}</a></li>
-        <li><a href="cctv-installation-melbourne.html#quote-request" class="nav-action-cta" data-cta="nav_quote">Get a Quote</a></li>
+        <li><a href="security.html#quote-request" class="nav-action-cta" data-cta="nav_quote">Get a Quote For CCTV</a></li>
       </ul>
     </nav>
   </div>
@@ -98,8 +104,7 @@ const footerHTML = `
     <div class="footer-col">
       <h4>Our Services</h4>
       <ul class="contact-details">
-        <li><i data-lucide="cctv"></i> <a href="cctv-installation-melbourne.html">CCTV Installation Melbourne</a></li>
-        <li><i data-lucide="shield-check"></i> <a href="security.html">Security Systems</a></li>
+        <li><i data-lucide="cctv"></i> <a href="security.html">CCTV & Security</a></li>
         <li><i data-lucide="radio"></i> <a href="telecommunications.html">Telecommunications</a></li>
         <li><i data-lucide="hard-hat"></i> <a href="civils.html">Civil Works</a></li>
         <li><i data-lucide="sun"></i> <a href="solar.html">Solar & Battery Solutions</a></li>
@@ -109,10 +114,6 @@ const footerHTML = `
     <div class="footer-col">
       <h4>Contact Us</h4>
       <ul class="contact-details">
-        <li>
-          <i data-lucide="phone"></i>
-          <a href="${SITE.phoneHref}">${SITE.phoneDisplay}</a>
-        </li>
         <li>
           <i data-lucide="mail"></i>
           <a href="mailto:${SITE.email}">${SITE.email}</a>
@@ -167,13 +168,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 7. Active nav link (works with or without .html / trailing slash)
   const pageSlug = (p) =>
-    (p || "").split("#")[0].replace(/\/$/, "").split("/").pop().replace(/\.html$/, "");
+    (p || "")
+      .split("#")[0]
+      .replace(/\/$/, "")
+      .split("/")
+      .pop()
+      .replace(/\.html$/, "");
   const currentPage = pageSlug(location.pathname);
   menuNavLinks.forEach((link) => {
     const href = link.getAttribute("href") || "";
     if (href.includes("#")) return;
     const slug = pageSlug(href);
-    if (slug && slug !== "index" && slug === currentPage) link.classList.add("active-nav");
+    if (slug && slug !== "index" && slug === currentPage)
+      link.classList.add("active-nav");
   });
 
   // 8. Mobile nav toggle
@@ -193,7 +200,8 @@ document.addEventListener("DOMContentLoaded", () => {
   menuNavLinks.forEach((link) => {
     link.addEventListener("click", () => {
       const isTrigger = link.classList.contains("dropdown-trigger");
-      if (!isTrigger && navigationGate?.classList.contains("open")) toggleMenu();
+      if (!isTrigger && navigationGate?.classList.contains("open"))
+        toggleMenu();
     });
   });
 
@@ -213,7 +221,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const a = e.target.closest("a");
     if (!a) return;
     const href = a.getAttribute("href") || "";
-    if (href.startsWith("tel:")) track("click_to_call", { link_location: a.className || "link" });
+    if (href.startsWith("tel:"))
+      track("click_to_call", { link_location: a.className || "link" });
     else if (href.startsWith("mailto:")) track("click_email");
     else if (a.dataset.cta) track("quote_cta_click", { cta: a.dataset.cta });
   });
@@ -223,7 +232,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const src = getLeadSource();
     form.querySelectorAll("[data-source]").forEach((input) => {
       const key = input.dataset.source;
-      if (key === "page") input.value = location.href + (src.landing && src.landing !== location.href ? ` (landed on ${src.landing})` : "");
+      if (key === "page")
+        input.value =
+          location.href +
+          (src.landing && src.landing !== location.href
+            ? ` (landed on ${src.landing})`
+            : "");
       else input.value = src[key] || "";
     });
   }
@@ -244,7 +258,9 @@ document.addEventListener("DOMContentLoaded", () => {
       // Optional photo: keep under Formspree's size limit
       const file = form.querySelector('input[type="file"]')?.files?.[0];
       if (file && file.size > 10 * 1024 * 1024) {
-        alert("That photo is larger than 10 MB. Please choose a smaller one or leave it out.");
+        alert(
+          "That photo is larger than 10 MB. Please choose a smaller one or leave it out.",
+        );
         return;
       }
 
@@ -284,15 +300,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   wireForm("unitechForm", "formSuccessAlert", "formErrorAlert", "btn-submit");
-  wireForm("quotationForm", "quoteSuccessAlert", "quoteErrorAlert", "btn-submit-quote");
-  wireForm("cctvQuoteForm", "cctvSuccessAlert", "cctvErrorAlert", "btn-submit-cctv");
+  wireForm(
+    "quotationForm",
+    "quoteSuccessAlert",
+    "quoteErrorAlert",
+    "btn-submit-quote",
+  );
+  wireForm(
+    "cctvQuoteForm",
+    "cctvSuccessAlert",
+    "cctvErrorAlert",
+    "btn-submit-cctv",
+  );
 
   // 11. Date fields: optional, can't pick a past date
   const pad = (n) => String(n).padStart(2, "0");
   const t = new Date();
   t.setDate(t.getDate() + 1);
   const minDate = `${t.getFullYear()}-${pad(t.getMonth() + 1)}-${pad(t.getDate())}`;
-  document.querySelectorAll('form input[type="date"]').forEach((d) => d.setAttribute("min", minDate));
+  document
+    .querySelectorAll('form input[type="date"]')
+    .forEach((d) => d.setAttribute("min", minDate));
 
   // 12. Stat counters. Real values are in the HTML (so Google and no-JS
   //     visitors never see "0"); we only animate when the bar scrolls into view.
@@ -304,7 +332,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const counters = document.querySelectorAll(".stat-number[data-target]");
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
   if (counters.length && !reduceMotion && "IntersectionObserver" in window) {
     const run = (el) => {
       const target = Number(el.dataset.target);

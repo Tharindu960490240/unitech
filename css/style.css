@@ -1782,7 +1782,6 @@ section {
   }
 }
 
-
 /* ==========================================================================
    16. CCTV LANDING PAGE + SHARED ADDITIONS
    ========================================================================== */
@@ -2263,4 +2262,57 @@ section {
   .partner-note-top {
     margin: 2rem var(--gutter) 0;
   }
+}
+.cctv-other {
+  background: #fff;
+  padding-top: 0;
+}
+.other-services-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 1024px) {
+  .other-services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  .other-services-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.two-col-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 900px;
+}
+.solar-page .partner-note {
+  margin: 0 auto 4rem;
+}
+@media (max-width: 768px) {
+  .solar-page .partner-note {
+    margin: 0 var(--gutter) 3rem;
+  }
+}
+@media (max-width: 560px) {
+  .two-col-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Solar promo: sits under the CCTV promo, blue gradient so the two blocks look distinct */
+.cctv-promo + .solar-promo {
+  padding-top: 0;
+}
+.solar-promo .cctv-promo-inner {
+  background: var(--grad-blue);
+}
+.solar-promo .cctv-promo-inner p {
+  color: #e0f2fe;
+}
+.solar-promo .btn-primary-tech {
+  background: #fff;
+  color: var(--tech-blue-dark);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+}
+.solar-promo .btn-primary-tech:hover {
+  background: var(--bg-tint);
 }
