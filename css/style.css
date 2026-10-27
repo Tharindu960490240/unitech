@@ -284,7 +284,7 @@ section {
 .menu-links {
   display: flex;
   align-items: center;
-  gap: 2.25rem;
+  gap: 1.75rem;
   list-style: none;
 }
 .menu-links a {
@@ -1543,7 +1543,10 @@ section {
     grid-column: 1 / -1;
   }
   .menu-links {
-    gap: 1.6rem;
+    gap: 1.1rem;
+  }
+  .menu-links a {
+    font-size: 0.86rem;
   }
 }
 
@@ -1776,5 +1779,488 @@ section {
   }
   .partners-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* ==========================================================================
+   16. CCTV LANDING PAGE + SHARED ADDITIONS
+   ========================================================================== */
+/* Header phone */
+.nav-phone {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--tech-blue-dark) !important;
+  font-weight: 700 !important;
+  white-space: nowrap;
+}
+.nav-phone svg {
+  width: 16px;
+  height: 16px;
+}
+.header-phone-mobile {
+  display: none;
+}
+
+/* Hero */
+.cctv-hero .service-hero-content h1 {
+  font-weight: 800;
+}
+.trust-pills {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.5rem 0 1.75rem;
+}
+.trust-pills li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.9rem;
+  background: #fff;
+  border: 1px solid var(--stroke-clean);
+  border-radius: 999px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--bg-deep);
+  box-shadow: var(--shadow-sm);
+}
+.trust-pills svg {
+  width: 16px;
+  height: 16px;
+  color: var(--tech-blue-dark);
+}
+.btn-call {
+  gap: 0.55rem;
+}
+.btn-call svg {
+  width: 17px;
+  height: 17px;
+}
+.hero-note {
+  margin-top: 1rem;
+  font-size: 0.88rem !important;
+  color: var(--text-sub);
+  font-weight: 600;
+}
+
+/* Sections */
+.cctv-section {
+  background: #fff;
+}
+.cctv-section .services-grid {
+  padding: 3rem 0 0;
+}
+.cctv-services-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+.cctv-why {
+  background: var(--bg-muted);
+}
+
+/* How it works: 5 steps */
+.steps-row {
+  list-style: none;
+  max-width: var(--maxw);
+  margin: 3rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1.25rem;
+  counter-reset: none;
+}
+.step-card {
+  background: var(--bg-muted);
+  border: 1px solid var(--stroke-clean);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.4rem;
+  box-shadow: var(--shadow-sm);
+}
+.step-card .step-no {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--grad-blue);
+  color: #fff;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  box-shadow: 0 6px 16px rgba(14, 165, 233, 0.35);
+}
+.step-card h3 {
+  font-size: 1.05rem;
+  color: var(--bg-deep);
+  margin-bottom: 0.4rem;
+}
+.step-card p {
+  font-size: 0.92rem;
+  color: var(--text-sub);
+}
+
+/* Areas */
+.cctv-areas {
+  background: var(--bg-muted);
+}
+.areas-grid {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+.areas-text {
+  color: var(--text-sub);
+  font-size: 1.02rem;
+  margin: 1rem 0 1.75rem;
+}
+.area-chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+.area-chips li {
+  padding: 0.6rem 1.1rem;
+  background: #fff;
+  border: 1px solid var(--stroke-clean);
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--bg-deep);
+}
+.area-chips li.chip-wide {
+  background: var(--tech-blue);
+  border-color: var(--tech-blue);
+  color: #fff;
+}
+
+/* FAQ */
+.faq-list {
+  max-width: 860px;
+  margin: 2.5rem auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.faq-list details {
+  background: #fff;
+  border: 1px solid var(--stroke-clean);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s ease;
+}
+.faq-list details[open] {
+  border-color: var(--tech-blue);
+}
+.faq-list summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 1.15rem 3.25rem 1.15rem 1.4rem;
+  font-weight: 700;
+  color: var(--bg-deep);
+  position: relative;
+}
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+.faq-list summary::after {
+  content: "+";
+  position: absolute;
+  right: 1.3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--tech-blue);
+}
+.faq-list details[open] summary::after {
+  content: "\2013";
+}
+.faq-list details p {
+  padding: 0 1.4rem 1.3rem;
+  color: var(--text-sub);
+  font-size: 0.96rem;
+}
+
+/* Quote form extras */
+.quote-layout {
+  align-items: start;
+}
+.choice-group {
+  border: none;
+}
+.choice-group legend {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--bg-deep);
+  margin-bottom: 0.45rem;
+}
+.choice-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+.choice-pill {
+  position: relative;
+  cursor: pointer;
+}
+.choice-pill input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  cursor: pointer;
+}
+.choice-pill span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1rem;
+  border: 1.5px solid var(--stroke-clean);
+  border-radius: 10px;
+  background: var(--bg-muted);
+  font-weight: 700;
+  color: var(--text-main);
+  transition: all 0.2s ease;
+}
+.choice-pill span svg {
+  width: 18px;
+  height: 18px;
+}
+.choice-pill input:checked + span {
+  border-color: var(--tech-blue);
+  background: var(--bg-tint);
+  color: var(--tech-blue-dark);
+}
+.choice-pill input:focus-visible + span {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+.optional-fields {
+  border: 1.5px dashed var(--stroke-clean);
+  border-radius: 12px;
+}
+.optional-fields summary {
+  cursor: pointer;
+  padding: 0.9rem 1.1rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--tech-blue-dark);
+}
+.optional-inner {
+  padding: 0.25rem 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.form-input-wrapper input[type="file"] {
+  padding: 0.7rem 0.9rem;
+  font-size: 0.9rem;
+}
+.field-hint {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+.form-privacy {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: -0.4rem;
+}
+.hp-field {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.success-alert-container a,
+.error-alert-container a {
+  color: var(--tech-blue-dark);
+  font-weight: 700;
+}
+
+/* Related services band */
+.related-band {
+  padding: 2rem var(--gutter);
+  text-align: center;
+  background: #fff;
+  border-top: 1px solid var(--stroke-clean);
+}
+.related-band a {
+  color: var(--tech-blue-dark);
+  font-weight: 700;
+}
+
+/* Prominent CCTV link block (home + security pages) */
+.cctv-promo {
+  padding: clamp(2.5rem, 5vw, 3.5rem) var(--gutter);
+  background: #fff;
+}
+.cctv-promo-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) auto;
+  gap: 1.5rem 2.5rem;
+  align-items: center;
+  padding: clamp(1.75rem, 4vw, 2.5rem) clamp(1.5rem, 4vw, 3rem);
+  border-radius: var(--radius-lg);
+  background: var(--bg-deep);
+  color: #fff;
+  box-shadow: var(--shadow-lg);
+}
+.cctv-promo-inner .section-badge {
+  background: rgba(255, 255, 255, 0.12);
+  color: #bae6fd;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.cctv-promo-inner h2 {
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+.cctv-promo-inner p {
+  margin-top: 0.5rem;
+  color: #bae6fd;
+}
+.cctv-promo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.cctv-promo-actions .btn-secondary-tech {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.cctv-promo-actions .btn-secondary-tech:hover {
+  background: #fff;
+  color: var(--bg-deep);
+}
+
+/* Mobile sticky call / quote bar */
+.mobile-cta-bar {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .cctv-services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .steps-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 1024px) {
+  .areas-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .cctv-promo-inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 900px) {
+  .nav-phone {
+    display: none !important;
+  }
+}
+@media (max-width: 768px) {
+  .nav-phone {
+    display: flex !important;
+  }
+  .header-phone-mobile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-tint);
+    color: var(--tech-blue-dark);
+    margin-left: auto;
+    margin-right: 0.75rem;
+  }
+  .header-phone-mobile svg {
+    width: 18px;
+    height: 18px;
+  }
+  .steps-row {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 560px;
+  }
+  .mobile-cta-bar {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 0.6rem;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 997;
+    padding: 0.65rem var(--gutter) calc(0.65rem + env(safe-area-inset-bottom));
+    background: rgba(255, 255, 255, 0.97);
+    border-top: 1px solid var(--stroke-clean);
+    box-shadow: 0 -6px 20px rgba(12, 42, 77, 0.08);
+  }
+  .mobile-cta-bar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.85rem;
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  .mobile-cta-bar svg {
+    width: 18px;
+    height: 18px;
+  }
+  .mcta-call {
+    border: 2px solid var(--tech-blue);
+    color: var(--tech-blue-dark);
+  }
+  .mcta-quote {
+    background: var(--tech-blue);
+    color: #fff;
+  }
+  body.has-mobile-cta {
+    padding-bottom: 76px;
+  }
+  body.has-mobile-cta .surface-scroll-trigger {
+    bottom: 92px;
+  }
+}
+@media (max-width: 560px) {
+  .cctv-services-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .trust-pills li {
+    font-size: 0.8rem;
+  }
+  .cctv-promo-actions {
+    flex-direction: column;
+  }
+}
+.link-arrow-sub {
+  margin-top: 0;
+  padding-top: 0;
+  font-weight: 600;
+  color: var(--text-sub);
+}
+.partner-note-top {
+  margin: 3rem auto 0;
+}
+@media (max-width: 768px) {
+  .partner-note-top {
+    margin: 2rem var(--gutter) 0;
   }
 }

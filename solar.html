@@ -3,12 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Solar & Battery Solutions | Unitech Networks</title>
+    <title>Solar &amp; Battery Solutions | Unitech Networks</title>
+    <meta
+      name="description"
+      content="Residential and commercial solar, battery storage and EV chargers in Victoria. Unitech coordinates your project and installation is completed by licensed, accredited partner installers."
+    />
+    <link rel="canonical" href="https://unitechnetworks.com.au/solar/" />
+    <link rel="icon" href="../favicon.ico" />
     <link rel="stylesheet" href="../css/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -24,10 +32,15 @@
           <span class="section-badge">Energy Solutions</span>
           <h1>Solar & Battery</h1>
           <p>
-            We help homeowners and businesses connect with trusted solar and
-            battery installation partners to reduce energy costs and improve
-            energy efficiency.
+            We help homeowners and businesses plan solar, battery and EV
+            charging projects and connect them with trusted, accredited
+            installation partners.
           </p>
+          <div class="hero-actions-row" style="margin-top: 1.75rem">
+            <a href="#quote-request" class="btn-primary-tech" data-cta="solar_hero_quote"
+              ><span>Get a Quote</span><i data-lucide="arrow-right"></i
+            ></a>
+          </div>
         </div>
         <div class="service-hero-image">
           <img
@@ -37,11 +50,22 @@
         </div>
       </section>
 
+      <!-- Partner Note -->
+      <div class="partner-note partner-note-top">
+        <i data-lucide="shield-check"></i>
+        <p>
+          <strong>How our solar service works:</strong> Unitech is your point of
+          contact. We discuss your needs, arrange the quote and coordinate the
+          project. The installation itself is carried out by our partner
+          installers, who hold the electrical licences and solar accreditation
+          required for the work.
+        </p>
+      </div>
+
       <section class="services-grid">
         <article class="service-box">
           <div class="service-img">
-            <img
-              src="../img/solar/residential.jpg"
+            <img loading="lazy"               src="../img/solar/residential.jpg"
               alt="Residential Solar Systems"
             />
           </div>
@@ -61,8 +85,7 @@
 
         <article class="service-box">
           <div class="service-img">
-            <img
-              src="../img/solar/commercial.jpg"
+            <img loading="lazy"               src="../img/solar/commercial.jpg"
               alt="Commercial Solar Systems"
             />
           </div>
@@ -82,8 +105,7 @@
 
         <article class="service-box">
           <div class="service-img">
-            <img
-              src="../img/solar/battery.jpg"
+            <img loading="lazy"               src="../img/solar/battery.jpg"
               alt="Battery Storage Solutions"
             />
           </div>
@@ -104,7 +126,7 @@
 
         <article class="service-box">
           <div class="service-img">
-            <img src="../img/solar/ev.jpg" alt="EV Charger Installation" />
+            <img loading="lazy" src="../img/solar/ev.jpg" alt="EV Charger Installation" />
           </div>
           <div class="service-body">
             <div class="box-header">
@@ -121,7 +143,7 @@
 
         <article class="service-box">
           <div class="service-img">
-            <img src="../img/solar/upgrade.jpg" alt="Solar System Upgrades" />
+            <img loading="lazy" src="../img/solar/upgrade.jpg" alt="Solar System Upgrades" />
           </div>
           <div class="service-body">
             <div class="box-header">
@@ -139,7 +161,7 @@
 
         <article class="service-box">
           <div class="service-img">
-            <img src="../img/solar/advice.jpg" alt="Energy Efficiency Advice" />
+            <img loading="lazy" src="../img/solar/advice.jpg" alt="Energy Efficiency Advice" />
           </div>
           <div class="service-body">
             <div class="box-header">
@@ -155,15 +177,6 @@
         </article>
       </section>
 
-      <!-- Partner Note -->
-      <div class="partner-note">
-        <i data-lucide="shield-check"></i>
-        <p>
-          Solar and battery installations are provided through our trusted
-          installation partners. All work is completed by appropriately licensed
-          and accredited professionals.
-        </p>
-      </div>
 
       <!-- Quotation Request Form Section -->
       <section class="communication-terminal-section" id="quote-request">
@@ -177,9 +190,8 @@
                 <span class="section-badge">Get a Quote</span>
                 <h3>Request a Quotation</h3>
                 <p class="form-desc-text">
-                  Fill out the form below with your project details and our team
-                  will get back to you promptly to confirm your booking and
-                  provide an estimate.
+                  Send us a few details and our team will get back to you
+                  promptly with next steps and an estimate.
                 </p>
               </div>
 
@@ -188,7 +200,13 @@
                 action="https://formspree.io/f/xbdbwwbe"
                 method="POST"
                 class="clean-enterprise-form"
+                data-lead-form="solar_quote"
               >
+                <!-- Lead source fields, filled by script.js -->
+                <input type="hidden" name="Lead Page" data-source="page" />
+                <input type="hidden" name="UTM Source" data-source="utm_source" />
+                <input type="hidden" name="UTM Campaign" data-source="utm_campaign" />
+                <input type="hidden" name="GCLID" data-source="gclid" />
                 <div class="form-dual-row">
                   <div class="form-input-wrapper">
                     <label for="firstName"
@@ -275,37 +293,19 @@
                   </div>
 
                   <div class="form-input-wrapper">
-                    <label for="bookingDate"
-                      >Approx Booking Date
-                      <span class="required-star">*</span></label
-                    >
-                    <input
-                      type="date"
-                      id="bookingDate"
-                      name="Approx Booking Date"
-                      required
-                    />
-                    <small
-                      style="
-                        color: var(--text-muted);
-                        font-size: 0.78rem;
-                        margin-top: 2px;
-                      "
-                      >Minimum 1 week notice required. We will contact you to
-                      confirm your date.</small
+                    <label for="bookingDate">Preferred date (optional)</label>
+                    <input type="date" id="bookingDate" name="Preferred Date" />
+                    <small class="field-hint"
+                      >We will contact you to confirm a time that suits.</small
                     >
                   </div>
                 </div>
 
                 <div class="form-input-wrapper">
-                  <label for="quoteMessage"
-                    >Please provide details of your Service enquiry?
-                    <span class="required-star">*</span></label
-                  >
+                  <label for="quoteMessage">Project details (optional)</label>
                   <textarea
                     id="quoteMessage"
                     name="Message"
-                    required
                     placeholder="Tell us about your project requirements..."
                   ></textarea>
                 </div>
