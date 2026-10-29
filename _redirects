@@ -1,0 +1,6 @@
+# Cloudflare Pages: serve the pages in /html at clean addresses
+# (the address in the browser stays /security, /solar, ...)
+/security            /html/security            200
+/solar               /html/solar               200
+/civils              /html/civils              200
+/telecommunications  /html/telecommunications  200
