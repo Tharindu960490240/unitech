@@ -8,8 +8,10 @@
       name="description"
       content="Professional CCTV installation in Melbourne for homes and businesses. Licensed security installers with 5 years of experience. Request a CCTV quote."
     />
-    <link rel="canonical" href="https://unitechnetworks.com.au/security/" />
+    <link rel="canonical" href="https://unitechnetworks.com.au/security" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Unitech Networks" />
+    <meta property="og:locale" content="en_AU" />
     <meta
       property="og:title"
       content="CCTV Installation Melbourne | Unitech Networks"
@@ -20,15 +22,15 @@
     />
     <meta
       property="og:url"
-      content="https://unitechnetworks.com.au/security/"
+      content="https://unitechnetworks.com.au/security"
     />
     <meta
       property="og:image"
       content="https://unitechnetworks.com.au/img/cctv/cctv-hero.jpg"
     />
 
-    <link rel="icon" href="../favicon.ico" />
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/css/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -39,30 +41,19 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="preload" as="image" href="../img/cctv/cctv-hero.jpg" />
+    <link rel="preload" as="image" href="/img/cctv/cctv-hero.jpg" />
     <script src="https://unpkg.com/lucide@0.469.0"></script>
 
-    <!-- LocalBusiness structured data. Confirm every value with Unitech before launch
-         (add "address" and "telephone" only if they are the real, public details). -->
+    <!-- CCTV service details for Google (business details live on the homepage) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "@id": "https://unitechnetworks.com.au/#business",
-        "name": "Unitech Networks",
-        "url": "https://unitechnetworks.com.au/",
-        "logo": "https://unitechnetworks.com.au/img/logo/logo.png",
+        "@type": "Service",
+        "name": "CCTV Installation Melbourne",
+        "serviceType": "CCTV and security camera installation",
+        "url": "https://unitechnetworks.com.au/security",
         "image": "https://unitechnetworks.com.au/img/cctv/cctv-hero.jpg",
-        "email": "admin@unitechnetworks.com.au",
-        "telephone": "+61451071769",
-        "foundingDate": "2021",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Werribee",
-          "addressRegion": "VIC",
-          "addressCountry": "AU"
-        },
-        "description": "CCTV installation, alarm systems, video intercoms and access control for homes and businesses across Melbourne, Victoria.",
+        "provider": { "@id": "https://unitechnetworks.com.au/#business" },
         "areaServed": [
           { "@type": "City", "name": "Melbourne" },
           { "@type": "Place", "name": "Werribee" },
@@ -70,41 +61,15 @@
           { "@type": "Place", "name": "Tarneit" },
           { "@type": "Place", "name": "Truganina" }
         ],
-        "sameAs": ["https://www.linkedin.com/company/unitechnetworks/"],
-        "makesOffer": {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "CCTV Installation",
-            "serviceType": "CCTV and security camera installation"
-          }
-        },
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "Security services",
           "itemListElement": [
-            {
-              "@type": "Offer",
-              "itemOffered": { "@type": "Service", "name": "CCTV Installation" }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": { "@type": "Service", "name": "Alarm Systems" }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Video Intercom Systems"
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Access Control Systems"
-              }
-            }
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Home CCTV Installation" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Commercial CCTV Installation" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Alarm Systems" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Video Intercom Systems" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Access Control Systems" } }
           ]
         }
       }
@@ -151,7 +116,7 @@
         </div>
         <div class="service-hero-image">
           <img
-            src="../img/cctv/cctv-hero.jpg"
+            src="/img/cctv/cctv-hero.jpg"
             alt="Unitech technician installing a CCTV camera on a Melbourne property"
             width="1200"
             height="800"
@@ -176,7 +141,7 @@
           <article class="service-box">
             <div class="service-img">
               <img
-                src="../img/cctv/cctv.jpg"
+                src="/img/cctv/cctv.jpg"
                 alt="Home CCTV camera installed on a residential property"
                 loading="lazy"
                 width="600"
@@ -200,7 +165,7 @@
           <article class="service-box">
             <div class="service-img">
               <img
-                src="../img/cctv/cctv-hero.jpg"
+                src="/img/cctv/cctv-hero.jpg"
                 alt="Commercial CCTV camera inside a business premises"
                 loading="lazy"
                 width="600"
@@ -224,7 +189,7 @@
           <article class="service-box">
             <div class="service-img">
               <img
-                src="../img/cctv/upgrade.jpg"
+                src="/img/cctv/upgrade.jpg"
                 alt="CCTV recorder and network equipment upgrade"
                 loading="lazy"
                 width="600"
@@ -250,7 +215,7 @@
           <article class="service-box">
             <div class="service-img">
               <img
-                src="../img/cctv/remote.jpg"
+                src="/img/cctv/remote.jpg"
                 alt="Viewing live CCTV footage on a mobile phone"
                 loading="lazy"
                 width="600"
@@ -288,7 +253,7 @@
           <article class="service-box">
             <div class="service-img">
               <img
-                src="../img/cctv/alarm.jpg"
+                src="/img/cctv/alarm.jpg"
                 alt="Security alarm system keypad"
                 loading="lazy"
                 width="600"
@@ -311,7 +276,7 @@
           <article class="service-box">
             <div class="service-img">
               <img
-                src="../img/cctv/intercom.jpg"
+                src="/img/cctv/intercom.jpg"
                 alt="Video intercom at a property entrance"
                 loading="lazy"
                 width="600"
@@ -334,7 +299,7 @@
           <article class="service-box">
             <div class="service-img">
               <img
-                src="../img/cctv/access_system.jpg"
+                src="/img/cctv/access_system.jpg"
                 alt="Access control card reader on a door"
                 loading="lazy"
                 width="600"
@@ -361,7 +326,7 @@
         <div class="why-grid">
           <div class="why-image">
             <img
-              src="../img/telecom/network.jpg"
+              src="/img/telecom/network.jpg"
               alt="Unitech Networks technician on a security installation"
               loading="lazy"
               width="800"
@@ -438,7 +403,7 @@
         </div>
         <div class="services-grid">
           <article class="service-box">
-            <div class="service-img"><img src="../img/cctv/projects/project-1.jpg" alt="DESCRIBE THE INSTALL" loading="lazy" /></div>
+            <div class="service-img"><img src="/img/cctv/projects/project-1.jpg" alt="DESCRIBE THE INSTALL" loading="lazy" /></div>
             <div class="service-body">
               <div class="box-header"><span class="index">SUBURB</span></div>
               <h3>8-camera system, warehouse</h3>
@@ -622,25 +587,6 @@
                   >
                 </div>
               </div>
-              <div class="channel-card">
-                <div class="channel-icon"><i data-lucide="phone"></i></div>
-                <div class="channel-details">
-                  <h4>Call Us</h4>
-                  <a href="tel:+61451071769">0451 071 769</a>
-                </div>
-              </div>
-              <div class="channel-card">
-                <div class="channel-icon"><i data-lucide="map-pin"></i></div>
-                <div class="channel-details">
-                  <h4>Location</h4>
-                  <a
-                    href="https://www.google.com/maps/search/?api=1&query=Werribee+VIC+3030"
-                    target="_blank"
-                    rel="noopener"
-                    >Werribee, Victoria</a
-                  >
-                </div>
-              </div>
             </div>
           </div>
 
@@ -653,7 +599,7 @@
 
               <form
                 id="cctvQuoteForm"
-                action="https://formspree.io/f/meaagwno"
+                action="https://formspree.io/f/xbdbwwbe"
                 method="POST"
                 enctype="multipart/form-data"
                 class="clean-enterprise-form"
@@ -827,6 +773,18 @@
                         placeholder="Areas to cover, existing system, internet at the property..."
                       ></textarea>
                     </div>
+                    <div class="form-input-wrapper">
+                      <label for="cqPhoto"
+                        >Photos of the property (optional)</label
+                      >
+                      <input
+                        type="file"
+                        id="cqPhoto"
+                        name="Photo"
+                        accept="image/*"
+                      />
+                      <small class="field-hint">JPG or PNG, up to 10 MB.</small>
+                    </div>
                   </div>
                 </details>
 
@@ -852,8 +810,7 @@
                 <h3>Quote request received</h3>
                 <p>
                   Thanks, we have your details. Our team will contact you
-                  shortly. For anything urgent, call
-                  <a href="tel:+61415661770">0415 661 770</a>.
+                  shortly.
                 </p>
               </div>
               <div
@@ -865,8 +822,7 @@
                 <i data-lucide="alert-circle"></i>
                 <h3>Your request was not sent</h3>
                 <p>
-                  Please try again, call
-                  <a href="tel:+61415661770">0415 661 770</a> or email
+                  Please try again, or email
                   <a href="mailto:admin@unitechnetworks.com.au"
                     >admin@unitechnetworks.com.au</a
                   >.
@@ -881,11 +837,8 @@
     <div id="footer-placeholder"></div>
 
     <!-- Mobile sticky call / quote bar -->
-    <!-- Mobile sticky call / quote bar -->
     <div class="mobile-cta-bar" aria-label="Quick contact">
-      <a href="tel:+61415661770" class="mcta-call"
-        ><i data-lucide="phone"></i> Call</a
-      >
+
       <a href="#quote-request" class="mcta-quote" data-cta="sticky_quote"
         ><i data-lucide="file-text"></i> Free Quote</a
       >
@@ -899,6 +852,6 @@
       <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-    <script src="../js/script.js"></script>
+    <script src="/js/script.js"></script>
   </body>
 </html>

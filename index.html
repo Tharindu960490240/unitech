@@ -1,18 +1,24 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-AU">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Unitech Networks | Telecommunications, Civils, Security & Solar
-    </title>
+    <title>Unitech Networks | Telecom, Civils, CCTV &amp; Solar in Melbourne</title>
     <meta
       name="description"
-      content="Established in 2021, Unitech Networks delivers telecommunications, civil works, CCTV & security and solar & battery solutions across Victoria, Australia."
+      content="Unitech Networks delivers telecommunications, civil works, CCTV security and solar solutions across Melbourne and Victoria. Based in Werribee. Get a free quote."
     />
     <link rel="canonical" href="https://unitechnetworks.com.au/" />
-    <link rel="icon" href="../favicon.ico" />
-    <link rel="stylesheet" href="../css/style.css" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Unitech Networks" />
+    <meta property="og:locale" content="en_AU" />
+    <meta property="og:title" content="Unitech Networks | Telecom, Civils, CCTV & Solar in Melbourne" />
+    <meta property="og:description" content="Telecommunications, civil works, CCTV security and solar solutions across Melbourne and Victoria." />
+    <meta property="og:url" content="https://unitechnetworks.com.au/" />
+    <meta property="og:image" content="https://unitechnetworks.com.au/img/cctv/cctv-hero.jpg" />
+
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/css/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -24,6 +30,54 @@
       rel="stylesheet"
     />
     <script src="https://unpkg.com/lucide@0.469.0"></script>
+    <!-- Main business details for Google (keep in sync with the footer) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://unitechnetworks.com.au/#website",
+            "url": "https://unitechnetworks.com.au/",
+            "name": "Unitech Networks",
+            "inLanguage": "en-AU"
+          },
+          {
+            "@type": "LocalBusiness",
+            "@id": "https://unitechnetworks.com.au/#business",
+            "name": "Unitech Networks",
+            "url": "https://unitechnetworks.com.au/",
+            "logo": "https://unitechnetworks.com.au/img/logo/logo.png",
+            "image": "https://unitechnetworks.com.au/img/cctv/cctv-hero.jpg",
+            "telephone": "+61451071769",
+            "email": "admin@unitechnetworks.com.au",
+            "foundingDate": "2021",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Werribee",
+              "addressRegion": "VIC",
+              "postalCode": "3030",
+              "addressCountry": "AU"
+            },
+            "areaServed": [
+              { "@type": "City", "name": "Melbourne" },
+              { "@type": "State", "name": "Victoria" }
+            ],
+            "sameAs": ["https://www.linkedin.com/company/unitechnetworks/"],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Services",
+              "itemListElement": [
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "CCTV Installation", "url": "https://unitechnetworks.com.au/security" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Solar and Battery Solutions", "url": "https://unitechnetworks.com.au/solar" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Telecommunications and NBN Installation", "url": "https://unitechnetworks.com.au/telecommunications" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Civil Works", "url": "https://unitechnetworks.com.au/civils" } }
+              ]
+            }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="header-placeholder"></div>
@@ -41,9 +95,7 @@
               <span class="hl-line">Connecting Victoria.</span>
               <span class="hl-line">Securing Properties.</span>
               <span class="hl-line">Powering the Future.</span>
-              <span class="hl-line highlight-blue"
-                >All From One Trusted Team.</span
-              >
+              <span class="hl-line highlight-blue">All From One Trusted Team.</span>
             </h1>
             <p class="hero-lead">
               Unitech Networks delivers professional telecommunications, civil
@@ -53,31 +105,17 @@
             </p>
             <!-- Compact quote shortcut: opens a choice, each option goes to its own quote form -->
             <div class="quote-picker" data-quote-picker>
-              <button
-                type="button"
-                class="quote-tab"
-                aria-expanded="false"
-                aria-controls="heroQuoteMenu"
-                data-cta="home_quote_tab"
-              >
+              <button type="button" class="quote-tab" aria-expanded="false" aria-controls="heroQuoteMenu" data-cta="home_quote_tab">
                 <span class="quote-tab-icons" aria-hidden="true">
                   <i data-lucide="cctv"></i>
                   <i data-lucide="sun"></i>
                 </span>
                 <span class="quote-tab-label">Get a Free Quote</span>
-                <i
-                  data-lucide="chevron-right"
-                  class="quote-tab-arrow"
-                  aria-hidden="true"
-                ></i>
+                <i data-lucide="chevron-right" class="quote-tab-arrow" aria-hidden="true"></i>
               </button>
               <div class="quote-options" id="heroQuoteMenu" hidden>
-                <a href="security.html#quote-request" data-cta="home_tab_cctv"
-                  ><i data-lucide="cctv"></i> CCTV Quote</a
-                >
-                <a href="solar.html#quote-request" data-cta="home_tab_solar"
-                  ><i data-lucide="sun"></i> Solar Quote</a
-                >
+                <a href="/security#quote-request" data-cta="home_tab_cctv"><i data-lucide="cctv"></i> CCTV Quote</a>
+                <a href="/solar#quote-request" data-cta="home_tab_solar"><i data-lucide="sun"></i> Solar Quote</a>
               </div>
             </div>
           </div>
@@ -86,22 +124,22 @@
             <div class="hero-mosaic">
               <figure>
                 <img
-                  src="../img/telecom/telecom_hero.jpg"
+                  src="/img/telecom/telecom_hero.jpg"
                   alt="Telecommunications crew"
                 />
                 <figcaption>Telecommunications</figcaption>
               </figure>
               <figure>
-                <img src="../img/civil/civil_hero.jpg" alt="Civil works" />
+                <img src="/img/civil/civil_hero.jpg" alt="Civil works" />
                 <figcaption>Civil Works</figcaption>
               </figure>
               <figure>
-                <img src="../img/cctv/cctv-hero.jpg" alt="CCTV and security" />
+                <img src="/img/cctv/cctv-hero.jpg" alt="CCTV and security" />
                 <figcaption>CCTV & Security</figcaption>
               </figure>
               <figure>
                 <img
-                  src="../img/solar/solar_hero.jpg"
+                  src="/img/solar/solar_hero.jpg"
                   alt="Solar and battery"
                 />
                 <figcaption>Solar & Battery</figcaption>
@@ -175,7 +213,7 @@
             <div class="service-img">
               <img
                 loading="lazy"
-                src="../img/telecom/telecom_hero.jpg"
+                src="/img/telecom/telecom_hero.jpg"
                 alt="Telecommunications"
               />
             </div>
@@ -189,7 +227,7 @@
                 NBN installs, fibre hauling and splicing, OTDR testing, network
                 builds and ongoing maintenance.
               </p>
-              <a class="link-arrow" href="telecommunications.html"
+              <a class="link-arrow" href="/telecommunications"
                 >View services <i data-lucide="arrow-right"></i
               ></a>
             </div>
@@ -198,7 +236,7 @@
             <div class="service-img">
               <img
                 loading="lazy"
-                src="../img/civil/civil_hero.jpg"
+                src="/img/civil/civil_hero.jpg"
                 alt="Civil works"
               />
             </div>
@@ -212,7 +250,7 @@
                 Trenching, pit and pipe, underground conduit, excavation and
                 reinstatement for utility projects.
               </p>
-              <a class="link-arrow" href="civils.html"
+              <a class="link-arrow" href="/civils"
                 >View services <i data-lucide="arrow-right"></i
               ></a>
             </div>
@@ -221,7 +259,7 @@
             <div class="service-img">
               <img
                 loading="lazy"
-                src="../img/cctv/cctv-hero.jpg"
+                src="/img/cctv/cctv-hero.jpg"
                 alt="CCTV and security"
               />
             </div>
@@ -235,7 +273,7 @@
                 CCTV, alarms, video intercoms and access control for homes and
                 commercial sites.
               </p>
-              <a class="link-arrow" href="security.html"
+              <a class="link-arrow" href="/security"
                 >View services <i data-lucide="arrow-right"></i
               ></a>
             </div>
@@ -244,7 +282,7 @@
             <div class="service-img">
               <img
                 loading="lazy"
-                src="../img/solar/solar_hero.jpg"
+                src="/img/solar/solar_hero.jpg"
                 alt="Solar and battery"
               />
             </div>
@@ -258,7 +296,7 @@
                 Residential and commercial solar, battery storage and EV
                 chargers through trusted install partners.
               </p>
-              <a class="link-arrow" href="solar.html"
+              <a class="link-arrow" href="/solar"
                 >View services <i data-lucide="arrow-right"></i
               ></a>
             </div>
@@ -272,7 +310,7 @@
           <div class="why-image">
             <img
               loading="lazy"
-              src="../img/telecom/network.jpg"
+              src="/img/telecom/network.jpg"
               alt="Unitech Networks team on site"
             />
           </div>
@@ -477,30 +515,30 @@
           <div class="partner-logo">
             <img
               loading="lazy"
-              src="../img/home/downer.jpg"
+              src="/img/home/downer.jpg"
               alt="Downer Group"
             />
           </div>
           <div class="partner-logo">
-            <img loading="lazy" src="../img/home/nbn.jpg" alt="NBN" />
+            <img loading="lazy" src="/img/home/nbn.jpg" alt="NBN" />
           </div>
           <div class="partner-logo">
-            <img loading="lazy" src="../img/home/fh.jpg" alt="Fulton Hogan" />
+            <img loading="lazy" src="/img/home/fh.jpg" alt="Fulton Hogan" />
           </div>
           <div class="partner-logo">
-            <img loading="lazy" src="../img/home/telstra.jpg" alt="Telstra" />
+            <img loading="lazy" src="/img/home/telstra.jpg" alt="Telstra" />
           </div>
           <div class="partner-logo">
-            <img loading="lazy" src="../img/home/ventia.jpg" alt="Ventia" />
+            <img loading="lazy" src="/img/home/ventia.jpg" alt="Ventia" />
           </div>
           <div class="partner-logo">
-            <img loading="lazy" src="../img/home/optus.jpg" alt="Optus" />
+            <img loading="lazy" src="/img/home/optus.jpg" alt="Optus" />
           </div>
           <div class="partner-logo">
-            <img loading="lazy" src="../img/home/ss.jpg" alt="Service Stream" />
+            <img loading="lazy" src="/img/home/ss.jpg" alt="Service Stream" />
           </div>
           <div class="partner-logo">
-            <img loading="lazy" src="../img/home/tpg.jpg" alt="TPG" />
+            <img loading="lazy" src="/img/home/tpg.jpg" alt="TPG" />
           </div>
         </div>
       </section>
@@ -586,7 +624,7 @@
               </p>
               <form
                 id="unitechForm"
-                action="https://formspree.io/f/meaagwno"
+                action="https://formspree.io/f/xbdbwwbe"
                 method="POST"
                 class="clean-enterprise-form"
                 data-lead-form="home_contact"
@@ -706,6 +744,6 @@
       <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-    <script src="../js/script.js"></script>
+    <script src="/js/script.js"></script>
   </body>
 </html>

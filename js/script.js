@@ -7,8 +7,8 @@ const SITE = {
   phoneDisplay: "0451 071 769",
   phoneHref: "tel:+61451071769",
   location: "Werribee, Victoria",
-  email: "admin@unitechnetworks.com.au",
   mapUrl: "https://www.google.com/maps/search/?api=1&query=Werribee+VIC+3030",
+  email: "admin@unitechnetworks.com.au",
   // Google Tag Manager container ID, e.g. "GTM-ABC1234". Leave empty until created.
   // GA4 and Google Ads conversion tags are then configured inside GTM.
   gtmId: "",
@@ -64,8 +64,14 @@ function getLeadSource() {
 const headerHTML = `
 <header class="site-header">
   <div class="nav-container">
-    <a href="index.html" class="brand-identity">
-      <img src="../img/logo/logo.png" alt="Unitech Networks" class="main-logo-img" width="180" height="42" />
+    <a href="/" class="brand-identity">
+      <img src="/img/logo/logo.png" alt="Unitech Networks" class="main-logo-img" width="180" height="42" />
+    </a>
+
+
+    <a href="${SITE.phoneHref}" class="header-phone-mobile" aria-label="Call Unitech Networks on ${SITE.phoneDisplay}">
+      <i data-lucide="phone"></i>
+      <span class="header-phone-text">${SITE.phoneDisplay}</span>
     </a>
 
     <button class="menu-toggle-btn" aria-label="Toggle Navigation" aria-expanded="false">
@@ -74,15 +80,15 @@ const headerHTML = `
 
     <nav class="navigation-gate" aria-label="Main">
       <ul class="menu-links">
-        <li><a href="index.html#home">Home</a></li>
-        <li><a href="index.html#about">About</a></li>
+        <li><a href="/#home">Home</a></li>
+        <li><a href="/#about">About</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-trigger">Services <i data-lucide="chevron-down"></i></a>
           <ul class="dropdown-menu">
-            <li><a href="security.html"><i data-lucide="cctv"></i> CCTV & Security</a></li>
-            <li><a href="telecommunications.html"><i data-lucide="radio"></i> Telecommunications</a></li>
-            <li><a href="civils.html"><i data-lucide="hard-hat"></i> Civil Works</a></li>
-            <li><a href="solar.html"><i data-lucide="sun"></i> Solar & Battery Solutions</a></li>
+            <li><a href="/security"><i data-lucide="cctv"></i> CCTV & Security</a></li>
+            <li><a href="/telecommunications"><i data-lucide="radio"></i> Telecommunications</a></li>
+            <li><a href="/civils"><i data-lucide="hard-hat"></i> Civil Works</a></li>
+            <li><a href="/solar"><i data-lucide="sun"></i> Solar & Battery Solutions</a></li>
           </ul>
         </li>
         <li class="nav-quote quote-picker" data-quote-picker>
@@ -90,8 +96,8 @@ const headerHTML = `
             Get a Free Quote <i data-lucide="chevron-down"></i>
           </button>
           <div class="quote-options" id="navQuoteMenu" hidden>
-            <a href="security.html#quote-request" data-cta="nav_quote_cctv"><i data-lucide="cctv"></i> CCTV Quote</a>
-            <a href="solar.html#quote-request" data-cta="nav_quote_solar"><i data-lucide="sun"></i> Solar Quote</a>
+            <a href="/security#quote-request" data-cta="nav_quote_cctv"><i data-lucide="cctv"></i> CCTV Quote</a>
+            <a href="/solar#quote-request" data-cta="nav_quote_solar"><i data-lucide="sun"></i> Solar Quote</a>
           </div>
         </li>
       </ul>
@@ -103,17 +109,17 @@ const footerHTML = `
 <footer class="corporate-footer">
   <div class="footer-grid">
     <div class="footer-col brand-col">
-      <img src="../img/logo/logo.png" alt="Unitech Networks" class="footer-logo" width="180" height="42" loading="lazy" />
+      <img src="/img/logo/logo.png" alt="Unitech Networks" class="footer-logo" width="180" height="42" loading="lazy" />
       <p>Telecommunications, civil works, CCTV & security and solar solutions across Victoria, Australia since 2021.</p>
     </div>
 
     <div class="footer-col">
       <h4>Our Services</h4>
       <ul class="contact-details">
-        <li><i data-lucide="cctv"></i> <a href="security.html">CCTV & Security</a></li>
-        <li><i data-lucide="radio"></i> <a href="telecommunications.html">Telecommunications</a></li>
-        <li><i data-lucide="hard-hat"></i> <a href="civils.html">Civil Works</a></li>
-        <li><i data-lucide="sun"></i> <a href="solar.html">Solar & Battery Solutions</a></li>
+        <li><i data-lucide="cctv"></i> <a href="/security">CCTV & Security</a></li>
+        <li><i data-lucide="radio"></i> <a href="/telecommunications">Telecommunications</a></li>
+        <li><i data-lucide="hard-hat"></i> <a href="/civils">Civil Works</a></li>
+        <li><i data-lucide="sun"></i> <a href="/solar">Solar & Battery Solutions</a></li>
       </ul>
     </div>
 
@@ -249,8 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
       closeAll(p);
       btn.setAttribute("aria-expanded", String(!open));
       menu.hidden = open;
-      if (!open)
-        track("quote_cta_click", { cta: btn.dataset.cta || "quote_picker" });
+      if (!open) track("quote_cta_click", { cta: btn.dataset.cta || "quote_picker" });
     });
     menu.querySelectorAll("a").forEach((a) =>
       a.addEventListener("click", () => {
@@ -344,14 +349,10 @@ document.addEventListener("DOMContentLoaded", () => {
           let reason = "HTTP " + response.status;
           try {
             const data = await response.json();
-            if (data.errors)
-              reason = data.errors.map((x) => x.message).join("; ");
+            if (data.errors) reason = data.errors.map((x) => x.message).join("; ");
             else if (data.error) reason = data.error;
           } catch (_) {}
-          console.error(
-            "[Unitech form] Formspree rejected the submission:",
-            reason,
-          );
+          console.error("[Unitech form] Formspree rejected the submission:", reason);
           throw new Error(reason);
         }
 

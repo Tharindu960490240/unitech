@@ -1,0 +1,31 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/security", "destination": "/html/security.html" },
+    { "source": "/solar", "destination": "/html/solar.html" },
+    { "source": "/civils", "destination": "/html/civils.html" },
+    { "source": "/telecommunications", "destination": "/html/telecommunications.html" }
+  ],
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/html/security.html", "destination": "/security", "permanent": true },
+    { "source": "/html/solar.html", "destination": "/solar", "permanent": true },
+    { "source": "/html/civils.html", "destination": "/civils", "permanent": true },
+    { "source": "/html/telecommunications.html", "destination": "/telecommunications", "permanent": true },
+    { "source": "/html/security", "destination": "/security", "permanent": true },
+    { "source": "/html/solar", "destination": "/solar", "permanent": true },
+    { "source": "/html/civils", "destination": "/civils", "permanent": true },
+    { "source": "/html/telecommunications", "destination": "/telecommunications", "permanent": true },
+    { "source": "/security.html", "destination": "/security", "permanent": true },
+    { "source": "/solar.html", "destination": "/solar", "permanent": true },
+    { "source": "/civils.html", "destination": "/civils", "permanent": true },
+    { "source": "/telecommunications.html", "destination": "/telecommunications", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/(css|js|img)/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }]
+    }
+  ]
+}
