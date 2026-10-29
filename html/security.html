@@ -20,10 +20,7 @@
       property="og:description"
       content="Home and commercial CCTV installation across Melbourne. Get a free quote from Unitech Networks."
     />
-    <meta
-      property="og:url"
-      content="https://unitechnetworks.com.au/security"
-    />
+    <meta property="og:url" content="https://unitechnetworks.com.au/security" />
     <meta
       property="og:image"
       content="https://unitechnetworks.com.au/img/cctv/cctv-hero.jpg"
@@ -65,11 +62,38 @@
           "@type": "OfferCatalog",
           "name": "Security services",
           "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Home CCTV Installation" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Commercial CCTV Installation" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Alarm Systems" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Video Intercom Systems" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Access Control Systems" } }
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Home CCTV Installation"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Commercial CCTV Installation"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": { "@type": "Service", "name": "Alarm Systems" }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Video Intercom Systems"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Access Control Systems"
+              }
+            }
           ]
         }
       }
@@ -587,7 +611,7 @@
                   >
                 </div>
               </div>
-                        <div class="channel-card">
+              <div class="channel-card">
                 <div class="channel-icon"><i data-lucide="phone"></i></div>
                 <div class="channel-details">
                   <h4>Call Us</h4>
@@ -792,18 +816,6 @@
                         placeholder="Areas to cover, existing system, internet at the property..."
                       ></textarea>
                     </div>
-                    <div class="form-input-wrapper">
-                      <label for="cqPhoto"
-                        >Photos of the property (optional)</label
-                      >
-                      <input
-                        type="file"
-                        id="cqPhoto"
-                        name="Photo"
-                        accept="image/*"
-                      />
-                      <small class="field-hint">JPG or PNG, up to 10 MB.</small>
-                    </div>
                   </div>
                 </details>
 
@@ -857,7 +869,6 @@
 
     <!-- Mobile sticky call / quote bar -->
     <div class="mobile-cta-bar" aria-label="Quick contact">
-
       <a href="#quote-request" class="mcta-quote" data-cta="sticky_quote"
         ><i data-lucide="file-text"></i> Free Quote</a
       >
