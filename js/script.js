@@ -69,11 +69,6 @@ const headerHTML = `
     </a>
 
 
-    <a href="${SITE.phoneHref}" class="header-phone-mobile" aria-label="Call Unitech Networks on ${SITE.phoneDisplay}">
-      <i data-lucide="phone"></i>
-      <span class="header-phone-text">${SITE.phoneDisplay}</span>
-    </a>
-
     <button class="menu-toggle-btn" aria-label="Toggle Navigation" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -255,7 +250,8 @@ document.addEventListener("DOMContentLoaded", () => {
       closeAll(p);
       btn.setAttribute("aria-expanded", String(!open));
       menu.hidden = open;
-      if (!open) track("quote_cta_click", { cta: btn.dataset.cta || "quote_picker" });
+      if (!open)
+        track("quote_cta_click", { cta: btn.dataset.cta || "quote_picker" });
     });
     menu.querySelectorAll("a").forEach((a) =>
       a.addEventListener("click", () => {
@@ -327,6 +323,10 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
+      // Clear the spam trap in case browser autofill filled it
+      const trap = form.querySelector('[name="_gotcha"]');
+      if (trap) trap.value = "";
+
       fillSourceFields(form);
       if (button) button.disabled = true;
       if (label) label.textContent = "Sending...";
@@ -349,10 +349,14 @@ document.addEventListener("DOMContentLoaded", () => {
           let reason = "HTTP " + response.status;
           try {
             const data = await response.json();
-            if (data.errors) reason = data.errors.map((x) => x.message).join("; ");
+            if (data.errors)
+              reason = data.errors.map((x) => x.message).join("; ");
             else if (data.error) reason = data.error;
           } catch (_) {}
-          console.error("[Unitech form] Formspree rejected the submission:", reason);
+          console.error(
+            "[Unitech form] Formspree rejected the submission:",
+            reason,
+          );
           throw new Error(reason);
         }
 

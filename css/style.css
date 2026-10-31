@@ -2069,6 +2069,7 @@ section {
   width: 1px;
   height: 1px;
   opacity: 0;
+  display: none !important;
 }
 .success-alert-container a,
 .error-alert-container a {
