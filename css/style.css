@@ -3000,6 +3000,16 @@ button.quote-tab {
 .legal-contact p {
   color: #e0f2fe;
 }
+.legal-contact-email {
+  margin-top: 0.4rem;
+  font-size: 0.92rem;
+}
+.legal-contact-email a {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: underline;
+  word-break: break-all;
+}
 .legal-contact-actions {
   display: flex;
   gap: 0.7rem;
