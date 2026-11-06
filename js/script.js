@@ -6,25 +6,52 @@
 const SITE = {
   phoneDisplay: "0451 071 769",
   phoneHref: "tel:+61451071769",
-  location: "Werribee, Victoria",
-  mapUrl: "https://www.google.com/maps/search/?api=1&query=Werribee+VIC+3030",
+  serviceArea: "Melbourne & Victoria (on-site service)",
   email: "admin@unitechnetworks.com.au",
-  // Google Tag Manager container ID, e.g. "GTM-ABC1234". Leave empty until created.
-  // GA4 and Google Ads conversion tags are then configured inside GTM.
+
+  // ---- Tracking: use ONE of the two options below, never both ----------
+  // Option A: Google Tag Manager container ID, e.g. "GTM-ABC1234".
+  //           GA4 and Google Ads tags are then set up inside GTM.
   gtmId: "",
+  // Option B (simpler): direct Google tags, no GTM needed.
+  ga4Id: "", //            GA4 Measurement ID, e.g. "G-XXXXXXXXXX"
+  adsId: "", //            Google Ads tag ID, e.g. "AW-123456789"
+  adsLeadLabel: "", //     conversion label for "Quote form submitted"
+  adsCallLabel: "", //     conversion label for "Click to call"
 };
 
-// ---- 1. Google Tag Manager + dataLayer ------------------------------------
+// ---- 1. Tracking: GTM or direct gtag + dataLayer ---------------------------
 window.dataLayer = window.dataLayer || [];
+function gtag() {
+  window.dataLayer.push(arguments);
+}
+const USE_GTAG = !SITE.gtmId && (SITE.ga4Id || SITE.adsId);
+
 function track(event, params = {}) {
   window.dataLayer.push({ event, page_path: location.pathname, ...params });
+  if (!USE_GTAG) return; // GTM handles it from the dataLayer
+  gtag("event", event, params); // GA4 event (mark generate_lead / click_to_call as key events)
+  // Google Ads conversions: real form success and phone taps only
+  if (SITE.adsId && event === "generate_lead" && SITE.adsLeadLabel)
+    gtag("event", "conversion", { send_to: SITE.adsId + "/" + SITE.adsLeadLabel });
+  if (SITE.adsId && event === "click_to_call" && SITE.adsCallLabel)
+    gtag("event", "conversion", { send_to: SITE.adsId + "/" + SITE.adsCallLabel });
+}
+
+function loadScript(src) {
+  const s = document.createElement("script");
+  s.async = true;
+  s.src = src;
+  document.head.appendChild(s);
 }
 if (SITE.gtmId) {
   window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
-  const s = document.createElement("script");
-  s.async = true;
-  s.src = "https://www.googletagmanager.com/gtm.js?id=" + SITE.gtmId;
-  document.head.appendChild(s);
+  loadScript("https://www.googletagmanager.com/gtm.js?id=" + SITE.gtmId);
+} else if (USE_GTAG) {
+  loadScript("https://www.googletagmanager.com/gtag/js?id=" + (SITE.ga4Id || SITE.adsId));
+  gtag("js", new Date());
+  if (SITE.ga4Id) gtag("config", SITE.ga4Id);
+  if (SITE.adsId) gtag("config", SITE.adsId);
 }
 
 // ---- 2. Lead source capture (first landing page + UTM / gclid) ------------
@@ -127,7 +154,7 @@ const footerHTML = `
         </li>
         <li>
           <i data-lucide="map-pin"></i>
-          <a href="${SITE.mapUrl}" target="_blank" rel="noopener">${SITE.location}</a>
+          <span>${SITE.serviceArea}</span>
         </li>
         <li>
           <i data-lucide="mail"></i>
@@ -142,7 +169,7 @@ const footerHTML = `
   </div>
 
   <div class="footer-bottom">
-    <p>© <span id="footer-year">2026</span> Unitech Networks. All Rights Reserved.</p>
+    <p>© <span id="footer-year">2026</span> Unitech Networks. All Rights Reserved. · <a href="/privacy">Privacy Policy</a></p>
     <p class="credit">Built by T&S Private Limited</p>
   </div>
 </footer>`;
@@ -388,6 +415,17 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+  // Coming from the Telecommunications / Civils "Contact Us" buttons:
+  // pre-fill the homepage form subject so the email shows which service it is about
+  (function prefillEnquiry() {
+    const topics = {
+      telecommunications: "Telecommunications enquiry",
+      civils: "Civil works enquiry",
+    };
+    const key = new URLSearchParams(location.search).get("enquiry");
+    const subject = document.getElementById("subject");
+    if (subject && topics[key] && !subject.value) subject.value = topics[key];
+  })();
   wireForm("unitechForm", "formSuccessAlert", "formErrorAlert", "btn-submit");
   wireForm(
     "quotationForm",
