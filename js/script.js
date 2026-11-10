@@ -21,6 +21,12 @@ const SITE = {
   // Add "solar_quote" or "home_contact" here if Unitech wants those counted too.
   adsLeadForms: ["cctv_quote"],
   adsCallLabel: "", //     conversion label for "Click to call" (not created yet)
+
+  // ---- Spam protection ----------------------------------------------------
+  // Cloudflare Turnstile SITE key (Cloudflare dashboard -> Turnstile -> widget).
+  // Leave empty to switch the widget off. The SECRET key goes in Formspree
+  // (Form -> Settings -> CAPTCHA -> Cloudflare Turnstile), never in this file.
+  turnstileSiteKey: "0x4AAAAAAF7-VSmIbPrHlfT-",
 };
 
 // ---- 1. Tracking: GTM or direct gtag + dataLayer ---------------------------
@@ -43,13 +49,9 @@ function track(event, params = {}) {
     SITE.adsLeadLabel &&
     SITE.adsLeadForms.includes(params.form_id)
   )
-    gtag("event", "conversion", {
-      send_to: SITE.adsId + "/" + SITE.adsLeadLabel,
-    });
+    gtag("event", "conversion", { send_to: SITE.adsId + "/" + SITE.adsLeadLabel });
   if (SITE.adsId && event === "click_to_call" && SITE.adsCallLabel)
-    gtag("event", "conversion", {
-      send_to: SITE.adsId + "/" + SITE.adsCallLabel,
-    });
+    gtag("event", "conversion", { send_to: SITE.adsId + "/" + SITE.adsCallLabel });
 }
 
 function loadScript(src) {
@@ -62,12 +64,39 @@ if (SITE.gtmId) {
   window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
   loadScript("https://www.googletagmanager.com/gtm.js?id=" + SITE.gtmId);
 } else if (USE_GTAG) {
-  loadScript(
-    "https://www.googletagmanager.com/gtag/js?id=" + (SITE.ga4Id || SITE.adsId),
-  );
+  loadScript("https://www.googletagmanager.com/gtag/js?id=" + (SITE.ga4Id || SITE.adsId));
   gtag("js", new Date());
   if (SITE.ga4Id) gtag("config", SITE.ga4Id);
   if (SITE.adsId) gtag("config", SITE.adsId);
+}
+
+// ---- 1b. Cloudflare Turnstile (spam check on every form) -------------------
+const turnstileQueue = []; // forms waiting for the Turnstile script to load
+window.unitechTurnstileReady = () => {
+  turnstileQueue.splice(0).forEach((fn) => fn());
+};
+if (SITE.turnstileSiteKey) {
+  loadScript(
+    "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=unitechTurnstileReady",
+  );
+}
+function addTurnstile(form) {
+  if (!SITE.turnstileSiteKey) return null;
+  const box = document.createElement("div");
+  box.className = "turnstile-box";
+  const submit = form.querySelector('[type="submit"]');
+  submit ? submit.before(box) : form.append(box);
+  const holder = { id: null };
+  const render = () => {
+    holder.id = window.turnstile.render(box, {
+      sitekey: SITE.turnstileSiteKey,
+      theme: "light",
+      size: "flexible",
+      action: form.dataset.leadForm || form.id,
+    });
+  };
+  window.turnstile ? render() : turnstileQueue.push(render);
+  return holder;
 }
 
 // ---- 2. Lead source capture (first landing page + UTM / gclid) ------------
@@ -336,6 +365,39 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Returns [field, message] for the first problem, or null if the lead looks real
+  function validateLead(form) {
+    const get = (sel) => form.querySelector(sel);
+    const name = get('[name="Name"], [name="First Name"]');
+    const phone = get('[type="tel"]');
+    const email = get('[type="email"]');
+    const texts = [...form.querySelectorAll("textarea, input[type=text]")];
+    const linkCount = (v) => (v.match(/https?:\/\/|www\./gi) || []).length;
+
+    if (name) {
+      const v = name.value.trim();
+      if (v.length < 2 || v.length > 80 || /[<>]|https?:|www\./i.test(v))
+        return [name, "Please enter your name."];
+    }
+    if (phone && phone.value.trim()) {
+      const digits = phone.value.replace(/[^\d]/g, "");
+      if (digits.length < 8 || digits.length > 12 || !/^[\d\s()+-]+$/.test(phone.value.trim()))
+        return [phone, "Please enter a valid Australian phone number."];
+    }
+    const promo = get('[name="Promo Code"]');
+    if (promo && promo.value.trim() && !/^[A-Za-z0-9 _-]{2,30}$/.test(promo.value.trim()))
+      return [promo, "Promo codes use letters and numbers only."];
+    if (email && !/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(email.value.trim()))
+      return [email, "Please enter a valid email address."];
+    for (const t of texts) {
+      if (t.name === "_gotcha" || t.closest(".hp-trap")) continue;
+      if (linkCount(t.value) > 1)
+        return [t, "Please remove the web links from your message."];
+      if (t.value.length > 3000) return [t, "Please shorten your message."];
+    }
+    return null;
+  }
+
   function wireForm(formId, successId, errorId, buttonId) {
     const form = document.getElementById(formId);
     if (!form) return;
@@ -346,6 +408,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const labelText = label?.textContent;
     const MESSAGE_MS = 5000; // how long the success / error message stays up
     let hideTimer;
+
+    // Spam protection: Turnstile widget, a hidden trap field only bots fill,
+    // and a minimum time on the page before sending
+    const captcha = addTurnstile(form);
+    const trapName = "contact_time_pref";
+    const trapWrap = document.createElement("div");
+    trapWrap.className = "hp-trap";
+    trapWrap.setAttribute("aria-hidden", "true");
+    trapWrap.innerHTML = `<label>Leave this field empty<input type="text" name="${trapName}" tabindex="-1" autocomplete="off"></label>`;
+    form.prepend(trapWrap);
+    const loadedAt = Date.now();
+    const resetCaptcha = () => {
+      if (captcha?.id != null && window.turnstile) window.turnstile.reset(captcha.id);
+    };
+    // Pretend success for bots, without sending anything or counting a lead
+    const fakeSuccess = () => {
+      form.reset();
+      form.style.display = "none";
+      if (success) success.style.display = "block";
+      hideTimer = setTimeout(hideMessages, MESSAGE_MS);
+    };
     const hideMessages = () => {
       clearTimeout(hideTimer);
       if (success) success.style.display = "none";
@@ -366,7 +449,34 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Clear the spam trap in case browser autofill filled it
+      // Bot checks: trap field filled, or form sent within 3 seconds of loading
+      const botTrap = form.querySelector(`[name="${trapName}"]`);
+      if ((botTrap && botTrap.value) || Date.now() - loadedAt < 3000) {
+        console.warn("[Unitech form] Blocked as spam");
+        track("form_spam_blocked", { form_id: form.dataset.leadForm || formId });
+        fakeSuccess();
+        return;
+      }
+
+      // Content checks (the same rules Formspree's spam filter cannot express)
+      const problem = validateLead(form);
+      if (problem) {
+        const [field, msg] = problem;
+        field.setCustomValidity(msg);
+        field.reportValidity();
+        field.addEventListener("input", () => field.setCustomValidity(""), { once: true });
+        return;
+      }
+
+      // Turnstile must be completed before sending
+      const token = form.querySelector('[name="cf-turnstile-response"]')?.value;
+      if (SITE.turnstileSiteKey && !token) {
+        alert("Please complete the security check above the Send button.");
+        return;
+      }
+
+      // Formspree's own honeypot: clear it in case browser autofill filled it
+      // (our own trap above catches bots instead)
       const trap = form.querySelector('[name="_gotcha"]');
       if (trap) trap.value = "";
 
@@ -409,8 +519,10 @@ document.addEventListener("DOMContentLoaded", () => {
           form_id: form.dataset.leadForm || formId,
           service: fd.get("Service Required") || fd.get("Service Type") || "",
           property_type: fd.get("Property Type") || "",
+          promo_code: (fd.get("Promo Code") || "").toString().trim().toUpperCase(),
         });
         form.reset();
+        resetCaptcha();
         form.style.display = "none";
         if (success) {
           success.style.display = "block";
@@ -421,6 +533,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } catch (err) {
         // Keep the form (and what they typed) so they can retry
         console.error("[Unitech form] Not sent:", err.message);
+        resetCaptcha(); // a Turnstile token works once only
         if (error) error.style.display = "block";
         // Hide the error after a few seconds; the form and its contents stay
         hideTimer = setTimeout(hideMessages, MESSAGE_MS);

@@ -63,3 +63,20 @@ so each requirement was applied to the equivalent static files.
 ## Rollback
 Redeploy the previous commit from Cloudflare (Workers & Pages → unitech → Deployments). Keep the
 redirect rule as it is (www → root).
+
+## Google Ads conversion tracking (10 Nov 2026)
+- Google tag AW-18555887123 installed once, on every page, via js/script.js (no tag in the HTML, no GTM)
+- "Request quote" conversion (label y78mCMyLpLUdEJO8kZBF) fires only when Formspree confirms a CCTV quote
+  (the "Quote request received" message). Failed sends, Solar quotes and homepage messages are not counted.
+- To count Solar quotes too, add "solar_quote" to SITE.adsLeadForms in js/script.js
+- GTM-TP3KBZ5L (Tag Manager container) is NOT installed on purpose, to avoid counting conversions twice
+
+## Spam protection (10 Nov 2026)
+- All forms (homepage, CCTV, Solar): Cloudflare Turnstile widget (set SITE.turnstileSiteKey), a hidden
+  bot-trap field, a 3-second minimum before sending, and checks on name, phone, email and links
+- Blocked spam is never sent to Formspree and never counted as a Google Ads conversion
+- Server-side: Formspree verifies the Turnstile token once the Turnstile secret key is added in Formspree
+
+## Promo code (11 Nov 2026)
+- Optional "Promo code" field on the CCTV and Solar quote forms (letters/numbers, max 30 characters)
+- Sent to Formspree as "Promo Code" and recorded with the lead event (promo_code) for GA4
