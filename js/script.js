@@ -15,9 +15,12 @@ const SITE = {
   gtmId: "",
   // Option B (simpler): direct Google tags, no GTM needed.
   ga4Id: "", //            GA4 Measurement ID, e.g. "G-XXXXXXXXXX"
-  adsId: "", //            Google Ads tag ID, e.g. "AW-123456789"
-  adsLeadLabel: "", //     conversion label for "Quote form submitted"
-  adsCallLabel: "", //     conversion label for "Click to call"
+  adsId: "AW-18555887123", // Unitech Google Ads tag (loaded once, on every page)
+  adsLeadLabel: "y78mCMyLpLUdEJO8kZBF", // "Request quote" conversion
+  // Which forms count as a "Request quote" conversion (data-lead-form values).
+  // Add "solar_quote" or "home_contact" here if Unitech wants those counted too.
+  adsLeadForms: ["cctv_quote"],
+  adsCallLabel: "", //     conversion label for "Click to call" (not created yet)
 };
 
 // ---- 1. Tracking: GTM or direct gtag + dataLayer ---------------------------
@@ -32,10 +35,21 @@ function track(event, params = {}) {
   if (!USE_GTAG) return; // GTM handles it from the dataLayer
   gtag("event", event, params); // GA4 event (mark generate_lead / click_to_call as key events)
   // Google Ads conversions: real form success and phone taps only
-  if (SITE.adsId && event === "generate_lead" && SITE.adsLeadLabel)
-    gtag("event", "conversion", { send_to: SITE.adsId + "/" + SITE.adsLeadLabel });
+  // Fires only after Formspree confirms the submission (see wireForm),
+  // i.e. when "Quote request received" is shown - never on a failed send.
+  if (
+    SITE.adsId &&
+    event === "generate_lead" &&
+    SITE.adsLeadLabel &&
+    SITE.adsLeadForms.includes(params.form_id)
+  )
+    gtag("event", "conversion", {
+      send_to: SITE.adsId + "/" + SITE.adsLeadLabel,
+    });
   if (SITE.adsId && event === "click_to_call" && SITE.adsCallLabel)
-    gtag("event", "conversion", { send_to: SITE.adsId + "/" + SITE.adsCallLabel });
+    gtag("event", "conversion", {
+      send_to: SITE.adsId + "/" + SITE.adsCallLabel,
+    });
 }
 
 function loadScript(src) {
@@ -48,7 +62,9 @@ if (SITE.gtmId) {
   window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
   loadScript("https://www.googletagmanager.com/gtm.js?id=" + SITE.gtmId);
 } else if (USE_GTAG) {
-  loadScript("https://www.googletagmanager.com/gtag/js?id=" + (SITE.ga4Id || SITE.adsId));
+  loadScript(
+    "https://www.googletagmanager.com/gtag/js?id=" + (SITE.ga4Id || SITE.adsId),
+  );
   gtag("js", new Date());
   if (SITE.ga4Id) gtag("config", SITE.ga4Id);
   if (SITE.adsId) gtag("config", SITE.adsId);
